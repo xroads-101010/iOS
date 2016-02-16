@@ -3,7 +3,6 @@
 //  xroads
 //
 //  Created by Abin Anto on 16/02/16.
-//  Copyright (c) 2016 lister. All rights reserved.
 //
 
 import UIKit
@@ -39,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        //testing
     }
 
 
