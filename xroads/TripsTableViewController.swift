@@ -11,6 +11,10 @@ import UIKit
 class TripsTableViewController: UITableViewController {
 
     @IBOutlet var menuButton: UIBarButtonItem!
+    
+    var trips:[Trip] = tripData
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,18 +47,26 @@ class TripsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return trips.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath)
+        
+        let trip = trips[indexPath.row] as Trip
+        cell.textLabel?.text = trip.tripName
+        //cell.detailTextLabel?.text = player.game
         return cell
     }
-    */
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        self.tabBarController?.navigationItem.title = "Upcoming Events"
+        self.tabBarController?.navigationItem.leftBarButtonItem = menuButton
+        
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
