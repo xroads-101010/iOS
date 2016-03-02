@@ -16,6 +16,9 @@
 		8657CD0B1C730A75007E8429 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8657CD0A1C730A75007E8429 /* Images.xcassets */; };
 		8657CD0E1C730A75007E8429 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8657CD0C1C730A75007E8429 /* LaunchScreen.xib */; };
 		8657CD1A1C730A75007E8429 /* xroadsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657CD191C730A75007E8429 /* xroadsTests.swift */; };
+		86A1DB971C86B1DD00A14744 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB961C86B1DD00A14744 /* SWRevealViewController.m */; };
+		86A1DB9B1C86B2DE00A14744 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB9A1C86B2DE00A14744 /* MenuController.swift */; };
+		86A1DB9D1C86B6E100A14744 /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,11 @@
 		8657CD131C730A75007E8429 /* xroadsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xroadsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8657CD181C730A75007E8429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8657CD191C730A75007E8429 /* xroadsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xroadsTests.swift; sourceTree = "<group>"; };
+		86A1DB941C86B1DD00A14744 /* xroads-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "xroads-Bridging-Header.h"; sourceTree = "<group>"; };
+		86A1DB951C86B1DD00A14744 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		86A1DB961C86B1DD00A14744 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		86A1DB9A1C86B2DE00A14744 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +91,14 @@
 		8657CD001C730A75007E8429 /* xroads */ = {
 			isa = PBXGroup;
 			children = (
+				86A1DB931C86B1AE00A14744 /* SWRevealViewController */,
 				8657CD031C730A75007E8429 /* AppDelegate.swift */,
 				8624298C1C75A0D2002EDEF8 /* LaunchViewController.swift */,
 				8624298E1C75A96F002EDEF8 /* RegisterController.swift */,
 				862429901C75C5F8002EDEF8 /* LoginViewController.swift */,
 				8657CD051C730A75007E8429 /* ViewController.swift */,
+				86A1DB9A1C86B2DE00A14744 /* MenuController.swift */,
+				86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */,
 				8657CD071C730A75007E8429 /* Main.storyboard */,
 				8657CD0A1C730A75007E8429 /* Images.xcassets */,
 				8657CD0C1C730A75007E8429 /* LaunchScreen.xib */,
@@ -119,6 +130,16 @@
 				8657CD181C730A75007E8429 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		86A1DB931C86B1AE00A14744 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				86A1DB951C86B1DD00A14744 /* SWRevealViewController.h */,
+				86A1DB961C86B1DD00A14744 /* SWRevealViewController.m */,
+				86A1DB941C86B1DD00A14744 /* xroads-Bridging-Header.h */,
+			);
+			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,10 +245,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8624298F1C75A96F002EDEF8 /* RegisterController.swift in Sources */,
+				86A1DB9B1C86B2DE00A14744 /* MenuController.swift in Sources */,
+				86A1DB9D1C86B6E100A14744 /* TripsTableViewController.swift in Sources */,
 				8657CD061C730A75007E8429 /* ViewController.swift in Sources */,
 				8624298D1C75A0D2002EDEF8 /* LaunchViewController.swift in Sources */,
 				862429911C75C5F8002EDEF8 /* LoginViewController.swift in Sources */,
 				8657CD041C730A75007E8429 /* AppDelegate.swift in Sources */,
+				86A1DB971C86B1DD00A14744 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,11 +380,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = xroads/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "xroads/xroads-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -369,11 +396,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = xroads/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "xroads/xroads-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
