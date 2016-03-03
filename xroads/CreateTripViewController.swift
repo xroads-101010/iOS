@@ -9,6 +9,7 @@
 import UIKit
 
 class CreateTripViewController: UIViewController {
+    @IBOutlet var createTripButton: UIButton!
     @IBOutlet var closeButton: UIButton!
 
     override func viewDidLoad() {
@@ -22,7 +23,11 @@ class CreateTripViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func clickCloseButton(sender: AnyObject) {
+    @IBAction func clickCreateTripButton(sender: UIButton) {
+        self.dismissViewControllerAnimated(false, completion: nil)
+    }
+    
+    @IBAction func clickCloseButton() {
         self.dismissViewControllerAnimated(false, completion: nil)
     }
 
