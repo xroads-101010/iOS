@@ -36,6 +36,20 @@ class MenuController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 3
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //CODE TO BE RUN ON CELL TOUCH
+        
+        let indexPath = tableView.indexPathForSelectedRow!
+        let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
+        
+        if(currentCell.textLabel!.text! == "Logout"){
+
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let destination = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        navigationController?.pushViewController(destination, animated: true)
+        }
+    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

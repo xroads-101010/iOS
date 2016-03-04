@@ -10,6 +10,7 @@ import UIKit
 
 class TripsTableViewController: UITableViewController {
 
+    @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var menuButton: UIBarButtonItem!
     
     var TableData = [Trip]()
@@ -72,6 +73,7 @@ class TripsTableViewController: UITableViewController {
         
         self.tabBarController?.navigationItem.title = "Upcoming Trips"
         self.tabBarController?.navigationItem.leftBarButtonItem = menuButton
+         self.tabBarController?.navigationItem.rightBarButtonItem = addButton
         
     }
     
