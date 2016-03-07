@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lFf-OD-By5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lFf-OD-By5">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -150,7 +150,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eqf-95-n16">
                                 <rect key="frame" x="185" y="323" width="380" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SA9-me-mcX">
                                 <rect key="frame" x="35" y="323" width="140" height="21"/>
@@ -164,7 +164,10 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pZC-Zg-0sb">
                                 <rect key="frame" x="185" y="374" width="380" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="confirmPasswordDidEndEditing:" destination="slJ-hs-Azi" eventType="editingDidEnd" id="xqe-uS-CEO"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZvK-Df-UA1">
                                 <rect key="frame" x="35" y="374" width="140" height="21"/>
@@ -185,6 +188,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="clickRegisterButton:" destination="slJ-hs-Azi" eventType="touchUpInside" id="FEN-6j-iFs"/>
                                     <segue destination="wMd-aH-ZUJ" kind="show" id="a8G-bw-dLE"/>
                                 </connections>
                             </button>
@@ -222,6 +226,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="ZLl-qr-SOH" secondAttribute="trailing" constant="15" id="w2i-VX-kc9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPassword" destination="pZC-Zg-0sb" id="htG-Sh-4eq"/>
+                        <outlet property="emailId" destination="shZ-ia-ew8" id="kcr-jr-CnL"/>
+                        <outlet property="mobileNumber" destination="XBS-fL-Gl5" id="0IL-eU-Xpa"/>
+                        <outlet property="name" destination="ZLl-qr-SOH" id="66O-ok-fjI"/>
+                        <outlet property="password" destination="Eqf-95-n16" id="hmv-u4-Vlb"/>
+                        <outlet property="registerButton" destination="E8f-5D-vtW" id="2cX-WB-JOV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ABM-zh-dQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -262,7 +274,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RkQ-vb-tKB">
                                 <rect key="frame" x="124" y="217" width="431" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="XRoads" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BK-ea-b2s">
                                 <rect key="frame" x="260" y="95" width="80" height="22"/>

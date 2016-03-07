@@ -9,23 +9,93 @@
 import UIKit
 
 class RegisterController: UIViewController {
+    @IBOutlet var mobileNumber: UITextField!
+    @IBOutlet var emailId: UITextField!
+    @IBOutlet var name: UITextField!
+    @IBOutlet var password: UITextField!
+    @IBOutlet var confirmPassword: UITextField!
+    @IBOutlet var registerButton: UIButton!
 
-    @IBOutlet var loginButton: UIButton!
+    @IBAction func clickRegisterButton(sender: AnyObject) {
+        
+        if(mobileNumber.text == "" || emailId.text == "" || name.text == "" || password.text == "" || confirmPassword == ""){
+            let alert = UIAlertController(title: "All fields are mandatory", message: "Some of the mandatory fields are missing.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+            return
+        }
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://4ef93830.ngrok.io/xroads-app/user")!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+        var response: NSURLResponse?
+        // var error: NSError?
+        
+        //let path = "https://4ef93830.ngrok.io/xroads-app/user";
+        //let options = NSJSONWritingOptions(rawValue: 0)
+        
+        // let parameters = ["email": emailId.text!, "userMobile": mobileNumber.text!, "userName": name.text!, "password": password.text!, "isRegistered": "true"] as Dictionary<String, String>
+        
+        let para:NSMutableDictionary = NSMutableDictionary()
+        para.setValue(emailId.text!, forKey: "email")
+        para.setValue(mobileNumber.text!, forKey: "userMobile")
+        para.setValue(name.text!, forKey: "userName")
+        para.setValue(password.text!, forKey: "password")
+        para.setValue("true", forKey: "isRegistered")
+        
+        let jsonData: NSData
+        var jsonString:String="";
+        do{
+            jsonData = try NSJSONSerialization.dataWithJSONObject(para, options: NSJSONWritingOptions())
+            jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+            print("json string = \(jsonString)")
+            
+        } catch _ {
+            print ("UH OOO")
+        }
+        
+        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // send the request
+        do {
+            try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+            // use jsonData
+        } catch {
+            // report error
+        }
+        
+        
+        // look at the response
+        if let httpResponse = response as? NSHTTPURLResponse {
+            print("HTTP response: \(httpResponse.statusCode)")
+        } else {
+            print("No HTTP response")
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(false, animated: true)
         // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    @IBAction func confirmPasswordDidEndEditing(sender: AnyObject) {
+        
+        if(confirmPassword.text != password.text){
+            let alert = UIAlertController(title: "Password Mismatch", message: "Passwords you have entered does'nt match", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    @IBAction func clickLogin(sender: AnyObject) {
-        let Login = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-        
-        self.navigationController!.pushViewController(Login, animated: true)
-    }
     
 
     /*
