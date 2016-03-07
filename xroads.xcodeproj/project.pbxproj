@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8603DFCF1C8DC1EA001C43A1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8603DFCE1C8DC1EA001C43A1 /* Podfile */; };
 		8614A69A1C8714AF005825C3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614A6991C8714AF005825C3 /* ProfileViewController.swift */; };
 		8624298D1C75A0D2002EDEF8 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624298C1C75A0D2002EDEF8 /* LaunchViewController.swift */; };
 		8624298F1C75A96F002EDEF8 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624298E1C75A96F002EDEF8 /* RegisterController.swift */; };
@@ -37,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1032C31A48C81EEEB63751AA /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../../Desktop/xroads-workspace/xroads/Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5CE04F7B0943E5AC2837F0AB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../../Desktop/xroads-workspace/xroads/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8603DFCE1C8DC1EA001C43A1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		8614A6991C8714AF005825C3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8624298C1C75A0D2002EDEF8 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		8624298E1C75A96F002EDEF8 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -80,12 +84,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B8A905E781DBBB37D84132D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5CE04F7B0943E5AC2837F0AB /* Pods.debug.xcconfig */,
+				1032C31A48C81EEEB63751AA /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8657CCF51C730A75007E8429 = {
 			isa = PBXGroup;
 			children = (
 				8657CD001C730A75007E8429 /* xroads */,
 				8657CD161C730A75007E8429 /* xroadsTests */,
 				8657CCFF1C730A75007E8429 /* Products */,
+				6B8A905E781DBBB37D84132D /* Pods */,
+				CD1E516BDF285ABD2C12CF93 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +116,7 @@
 		8657CD001C730A75007E8429 /* xroads */ = {
 			isa = PBXGroup;
 			children = (
+				8603DFCE1C8DC1EA001C43A1 /* Podfile */,
 				86A1DB931C86B1AE00A14744 /* SWRevealViewController */,
 				8657CD031C730A75007E8429 /* AppDelegate.swift */,
 				9667CA401C8D9BEE0016949E /* ApiEndPoints.swift */,
@@ -157,6 +173,13 @@
 			name = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		CD1E516BDF285ABD2C12CF93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8657CD1D1C730A75007E8429 /* Build configuration list for PBXNativeTarget "xroads" */;
 			buildPhases = (
+				500E53497C2E2A89FDDA2A26 /* Check Pods Manifest.lock */,
 				8657CCFA1C730A75007E8429 /* Sources */,
 				8657CCFB1C730A75007E8429 /* Frameworks */,
 				8657CCFC1C730A75007E8429 /* Resources */,
+				73A244459868A9EFD1057EDA /* Embed Pods Frameworks */,
+				177B0B5E7326F82BB0AA12D7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -241,6 +267,7 @@
 			files = (
 				8657CD091C730A75007E8429 /* Main.storyboard in Resources */,
 				8657CD0E1C730A75007E8429 /* LaunchScreen.xib in Resources */,
+				8603DFCF1C8DC1EA001C43A1 /* Podfile in Resources */,
 				8657CD0B1C730A75007E8429 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +280,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		177B0B5E7326F82BB0AA12D7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../Desktop/xroads-workspace/xroads/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		500E53497C2E2A89FDDA2A26 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		73A244459868A9EFD1057EDA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../../Desktop/xroads-workspace/xroads/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8657CCFA1C730A75007E8429 /* Sources */ = {
@@ -399,6 +474,7 @@
 		};
 		8657CD1E1C730A75007E8429 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CE04F7B0943E5AC2837F0AB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -415,6 +491,7 @@
 		};
 		8657CD1F1C730A75007E8429 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1032C31A48C81EEEB63751AA /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
