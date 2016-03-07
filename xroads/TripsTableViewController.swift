@@ -31,8 +31,9 @@ class TripsTableViewController: UITableViewController {
         }
         
         self.tableView.rowHeight = 70
+        print(ApiEndPoints().upcomingTripEndPoint!);
         
-        get_data_from_url("https://0761c8ea.ngrok.io/xroads-app/trip/champion?id=4");
+        get_data_from_url(ApiEndPoints().upcomingTripEndPoint!);
         
         //makeHTTPGetRequest("https://0761c8ea.ngrok.io/xroads-app/trip/champion?id=4")
     }
@@ -69,12 +70,6 @@ class TripsTableViewController: UITableViewController {
         if let gameLabel = cell.viewWithTag(101) as? UILabel {
             gameLabel.text = trip.tripDestination
         }
-        
-        //cell.textLabel?.text = trip.tripName
-        
-        //cell.textLabel?.text = TableData[indexPath.row].html_url
-        
-        //cell.detailTextLabel?.text = player.game
         
         return cell
     }
