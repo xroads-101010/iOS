@@ -33,22 +33,22 @@ class Trip {
     
     var tripName: String?
     var tripDestination: String?
-    var tripChampion: String?
-    var hasTripStarted: String?
-    var startTime: String?
-    var endTime: String?
-    var createdAt: String?
-    var updatedAt: String?
+    var tripChampion: Int?
+    var hasTripStarted: Bool?
+    var startTime: Double?
+    var endTime: Double?
+    var createdAt: Double?
+    var updatedAt: Double?
     
     init(json: NSDictionary)
     {
         self.tripName = json["tripName"] as? String
         self.tripDestination = json["tripDestination"] as? String
-        self.tripChampion = json["tripChampion"] as? String
-        self.hasTripStarted = json["hasTripStarted"] as? String
-        self.startTime = json["startTime"] as? String
-        self.endTime = json["endTime"] as? String
-        self.createdAt = json["createdAt"] as? String
-        self.updatedAt = json["updatedAt"] as? String
+        self.tripChampion = json["tripChampion"] as? Int
+        self.hasTripStarted = json["hasTripStarted"] as? Bool
+        self.startTime = json["startTime"] as? Double
+        self.endTime = json["endTime"] as? Double
+        self.createdAt = json["createdAt"] as? Double
+        self.updatedAt = json["updatedAt"] as? Double
     }
 }

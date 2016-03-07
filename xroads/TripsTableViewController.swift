@@ -14,6 +14,7 @@ class TripsTableViewController: UITableViewController {
     @IBOutlet var menuButton: UIBarButtonItem!
     
     var TableData = [Trip]()
+    let tripSegueIdentifier = "ShowDetailsSegue"
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,11 @@ class TripsTableViewController: UITableViewController {
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
         
-        get_data_from_url("https://4ef93830.ngrok.io/xroads-app/trip/champion?id=4");
+        self.tableView.rowHeight = 70
         
-        //makeHTTPGetRequest("https://4ef93830.ngrok.io/xroads-app/trip/champion?id=4")
+        get_data_from_url("https://0761c8ea.ngrok.io/xroads-app/trip/champion?id=4");
+        
+        //makeHTTPGetRequest("https://0761c8ea.ngrok.io/xroads-app/trip/champion?id=4")
     }
 
     @IBAction func menuButtonClick(sender: UIBarButtonItem) {
@@ -60,7 +63,14 @@ class TripsTableViewController: UITableViewController {
         
         let trip = TableData[indexPath.row]
         
-        cell.textLabel?.text = trip.tripName
+        if let nameLabel = cell.viewWithTag(100) as? UILabel { //3
+            nameLabel.text = trip.tripName
+        }
+        if let gameLabel = cell.viewWithTag(101) as? UILabel {
+            gameLabel.text = trip.tripDestination
+        }
+        
+        //cell.textLabel?.text = trip.tripName
         
         //cell.textLabel?.text = TableData[indexPath.row].html_url
         
@@ -73,7 +83,7 @@ class TripsTableViewController: UITableViewController {
         
         self.tabBarController?.navigationItem.title = "Upcoming Trips"
         self.tabBarController?.navigationItem.leftBarButtonItem = menuButton
-         self.tabBarController?.navigationItem.rightBarButtonItem = addButton
+        self.tabBarController?.navigationItem.rightBarButtonItem = addButton
         
     }
     
@@ -149,6 +159,20 @@ class TripsTableViewController: UITableViewController {
             }
         })
         task.resume()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == tripSegueIdentifier {
+            if let destination = segue.destinationViewController as? TripDetailsViewController {
+                if let tripIndex = tableView.indexPathForSelectedRow?.row {
+                    destination.tripName = TableData[tripIndex].tripName!
+                    destination.startDate = NSDate(timeIntervalSince1970: NSTimeInterval(TableData[tripIndex].startTime!))
+                    destination.endDate = NSDate(timeIntervalSince1970: NSTimeInterval(TableData[tripIndex].endTime!))
+                    destination.destination = TableData[tripIndex].tripDestination!
+                    destination.createdBy = TableData[tripIndex].tripChampion!
+                }
+            }
+        }
     }
 
 
