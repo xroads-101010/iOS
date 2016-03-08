@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8603DFCF1C8DC1EA001C43A1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8603DFCE1C8DC1EA001C43A1 /* Podfile */; };
+		8603DFD11C8DDA49001C43A1 /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8603DFD01C8DDA49001C43A1 /* GoogleMapViewController.swift */; };
 		8614A69A1C8714AF005825C3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614A6991C8714AF005825C3 /* ProfileViewController.swift */; };
 		8624298D1C75A0D2002EDEF8 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624298C1C75A0D2002EDEF8 /* LaunchViewController.swift */; };
 		8624298F1C75A96F002EDEF8 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624298E1C75A96F002EDEF8 /* RegisterController.swift */; };
@@ -137,12 +138,13 @@
 				86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */,
 				8614A6991C8714AF005825C3 /* ProfileViewController.swift */,
 				86FC4F131C881DC500BE4101 /* CreateTripViewController.swift */,
+				96AB6DF31C89B259000A4B82 /* TripDetailsViewController.swift */,
+				8603DFD01C8DDA49001C43A1 /* GoogleMapViewController.swift */,
 				8657CD071C730A75007E8429 /* Main.storyboard */,
 				8657CD0A1C730A75007E8429 /* Images.xcassets */,
 				8657CD0C1C730A75007E8429 /* LaunchScreen.xib */,
 				8657CD011C730A75007E8429 /* Supporting Files */,
 				96A2F4011C86F0B800B9F2C6 /* Trip.swift */,
-				96AB6DF31C89B259000A4B82 /* TripDetailsViewController.swift */,
 			);
 			path = xroads;
 			sourceTree = "<group>";
@@ -344,6 +346,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8603DFD11C8DDA49001C43A1 /* GoogleMapViewController.swift in Sources */,
 				8624298F1C75A96F002EDEF8 /* RegisterController.swift in Sources */,
 				86A1DB9B1C86B2DE00A14744 /* MenuController.swift in Sources */,
 				96AB6DF41C89B259000A4B82 /* TripDetailsViewController.swift in Sources */,
