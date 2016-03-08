@@ -26,7 +26,7 @@ class RegisterController: UIViewController {
             return
         }
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://4ef93830.ngrok.io/xroads-app/user")!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+        let request = NSMutableURLRequest(URL: NSURL(string: ApiEndPoints().registrationEndPoint!)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         var response: NSURLResponse?
         // var error: NSError?
         

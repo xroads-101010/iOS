@@ -31,7 +31,6 @@ class TripsTableViewController: UITableViewController {
         }
         
         self.tableView.rowHeight = 70
-        print(ApiEndPoints().upcomingTripEndPoint!);
         
         get_data_from_url(ApiEndPoints().upcomingTripEndPoint!);
         
