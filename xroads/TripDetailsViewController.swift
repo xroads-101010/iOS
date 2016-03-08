@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import GoogleMaps
 
 class TripDetailsViewController: UIViewController {
 
@@ -53,20 +54,15 @@ class TripDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let location = CLLocationCoordinate2D(
-            latitude: 51.50007773,
-            longitude: -0.1246402
-        )
+        let detailsWidth: CGFloat = view.bounds.width
+        let detailsHeight: CGFloat = view.bounds.height - (createdByLabel.frame.origin.y + 100)
+        let detailsViewFrame: CGRect = CGRectMake(0, createdByLabel.frame.origin.y + 100, detailsWidth, detailsHeight)
         
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegion(center: location, span: span)
-        mapView.setRegion(region, animated: true)
+        let detailsController = storyboard?.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
         
-        //3
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = "Big Ben"
-        annotation.subtitle = "London"
-        mapView.addAnnotation(annotation)
+        self.addChildViewController(detailsController)
+        detailsController.view.frame = detailsViewFrame
+        view.addSubview(detailsController.view)
+        detailsController.didMoveToParentViewController(self)
     }
 }

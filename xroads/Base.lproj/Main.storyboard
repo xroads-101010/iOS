@@ -434,7 +434,7 @@
             </objects>
             <point key="canvasLocation" x="944" y="-1761"/>
         </scene>
-        <!--Upcoming Events-->
+        <!--Trips Table View Controller-->
         <scene sceneID="0rt-LL-kxl">
             <objects>
                 <tableViewController id="SIm-qg-23Q" customClass="TripsTableViewController" customModule="xroads" customModuleProvider="target" sceneMemberID="viewController">
@@ -480,7 +480,7 @@
                             <outlet property="delegate" destination="SIm-qg-23Q" id="Jqf-Aw-W5L"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Upcoming Events" id="hgq-yn-P1m">
+                    <navigationItem key="navigationItem" id="hgq-yn-P1m">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="2a5-Wk-qb3"/>
                         <barButtonItem key="rightBarButtonItem" image="Plus Filled-50" id="sZS-S4-Mgn">
                             <inset key="imageInsets" minX="2" minY="4" maxX="2" maxY="4"/>
@@ -590,8 +590,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Created By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p25-nd-nVb">
-                                <rect key="frame" x="35" y="241" width="120" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created By" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p25-nd-nVb">
+                                <rect key="frame" x="35" y="246" width="120" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="P0U-6y-Vhe"/>
                                     <constraint firstAttribute="width" constant="120" id="vBc-tg-Uzs"/>
@@ -609,9 +609,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5k9-7b-YUK">
-                                <rect key="frame" x="0.0" y="380" width="600" height="171"/>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -643,7 +640,6 @@
                         <outlet property="createdByLabel" destination="Bgh-xv-fyV" id="XFL-Wg-q0K"/>
                         <outlet property="destinationLabel" destination="wuk-Zh-q8S" id="pqc-xU-v16"/>
                         <outlet property="endTimeLabel" destination="NJw-IJ-bSx" id="e90-8Y-XdE"/>
-                        <outlet property="mapView" destination="5k9-7b-YUK" id="yt5-tA-DCh"/>
                         <outlet property="startDateLabel" destination="bKL-ge-vq7" id="Evo-Z3-iuZ"/>
                         <outlet property="tripNameLabel" destination="xWQ-SV-DAz" id="ZVV-UA-IoE"/>
                     </connections>
@@ -651,6 +647,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAV-qf-wmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4208" y="-2120"/>
+        </scene>
+        <!--Google Map View Controller-->
+        <scene sceneID="hdQ-wx-6Kh">
+            <objects>
+                <viewController storyboardIdentifier="GoogleMapViewController" id="EPj-ot-5CJ" customClass="GoogleMapViewController" customModule="xroads" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L9d-RX-Mll"/>
+                        <viewControllerLayoutGuide type="bottom" id="wSB-6u-mgt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sWo-Mj-FlE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8P-I4-U9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4940" y="-2112"/>
         </scene>
         <!--Create Trip View Controller-->
         <scene sceneID="NJb-yt-vWi">
@@ -731,16 +745,22 @@
                                 <rect key="frame" x="165" y="347" width="400" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="touchStartPoint:" destination="8Bn-Y3-CGX" eventType="touchDown" id="oiI-XA-h02"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fbO-Xx-HQz">
                                 <rect key="frame" x="165" y="398" width="400" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="touchDestination:" destination="8Bn-Y3-CGX" eventType="touchDown" id="p0I-6o-0qc"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nKX-I5-pme">
-                                <rect key="frame" x="165" y="296" width="400" height="30"/>
+                                <rect key="frame" x="165" y="296" width="400" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="W8M-je-RKT"/>
+                                    <constraint firstAttribute="height" constant="40" id="W8M-je-RKT"/>
                                 </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="478696371.242612">
                                     <!--2016-03-03 11:12:51 +0000-->
@@ -752,16 +772,16 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="eg2-2i-GzD">
-                                <rect key="frame" x="165" y="245" width="400" height="30"/>
+                                <rect key="frame" x="165" y="245" width="400" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="9Bb-5x-N5i"/>
+                                    <constraint firstAttribute="height" constant="40" id="9Bb-5x-N5i"/>
                                 </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="478696488.74963301">
                                     <!--2016-03-03 11:14:48 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlt-UB-1H0">
-                                <rect key="frame" x="165" y="458" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlt-UB-1H0">
+                                <rect key="frame" x="35" y="458" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.80710078529999996" green="0.3213838886" blue="0.24465936190000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6L2-Kc-9fD"/>
@@ -774,8 +794,8 @@
                                     <action selector="clickCreateTripButton:" destination="8Bn-Y3-CGX" eventType="touchUpInside" id="apR-bf-bHr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWe-yo-Kfe">
-                                <rect key="frame" x="300" y="458" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWe-yo-Kfe">
+                                <rect key="frame" x="170" y="458" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.80710078529999996" green="0.3213838886" blue="0.24465936190000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Gjf-6h-JuK"/>
@@ -826,6 +846,8 @@
                     <connections>
                         <outlet property="closeButton" destination="RWe-yo-Kfe" id="rkq-vQ-phO"/>
                         <outlet property="createTripButton" destination="xlt-UB-1H0" id="KTG-nC-Txo"/>
+                        <outlet property="destinationTextField" destination="fbO-Xx-HQz" id="B1G-ef-AoB"/>
+                        <outlet property="startPointTextField" destination="YsZ-XG-mYi" id="Vyw-hy-k5g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSI-4n-c9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
