@@ -13,6 +13,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var userId: UITextField!
     @IBOutlet var password: UITextField!
     
+    var userData = [UserModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(false, animated: true)
@@ -33,57 +35,10 @@ class LoginViewController: UIViewController {
             
             return
         }
-        doUserLogin2(ApiEndPoints().loginEndPoint!);
+        doUserLogin(ApiEndPoints().loginEndPoint!);
     }
     
-    /*func doUserLogin(path: String)
-    {
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: path)!)
-        
-        var response: NSURLResponse?
-        
-        let userInputData:NSMutableDictionary = NSMutableDictionary()
-        userInputData.setValue(userId.text!, forKey: "userName")
-        userInputData.setValue(password.text!, forKey: "password")
-        
-        let json: NSData
-        var jsonString:String="";
-        
-        do {
-           // json = try NSJSONSerialization.dataWithJSONObject(userInputData, options: NSJSONReadingOptions())
-            json = try NSJSONSerialization.dataWithJSONObject(userInputData, options: NSJSONWritingOptions())
-            jsonString = NSString(data: json, encoding: NSUTF8StringEncoding) as! String
-            
-                        
-        } catch  {
-            print("error trying to convert data to JSON")
-            return
-        }
-        
-        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        request.HTTPMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // send the request
-        do {
-            try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
-            // use jsonData
-        } catch {
-            // report error
-        }
-        
-        // look at the response
-        if let httpResponse = response as? NSHTTPURLResponse {
-            print(httpResponse)
-            print("HTTP response: \(httpResponse.statusCode)")
-        } else {
-            print("No HTTP response")
-        }
-        
-    }*/
-    
-    func doUserLogin2(path: String)
+    func doUserLogin(path: String)
     {
         
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
@@ -111,27 +66,33 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            let json: NSDictionary
+            let jsonData: NSDictionary
             
-            do {
-                json = try NSJSONSerialization.JSONObjectWithData(responseData,
-                    options: NSJSONReadingOptions()) as! NSDictionary
-                
-                /*if let reposArray = json["trips"] as? [NSDictionary] {
+            let httpResponse = response as? NSHTTPURLResponse
+            
+            if(httpResponse?.statusCode == 200)
+            {
+                do {
+                    jsonData = try NSJSONSerialization.JSONObjectWithData(responseData,
+                        options: NSJSONReadingOptions()) as! NSDictionary
                     
-                    for trip in reposArray {
-                        self.TableData.append(Trip(json: trip))
-                    }
                     
-                    self.tableView.reloadData()
-                }*/
-                
-                 print(json);
-                
-            } catch  {
-                print("error trying to convert data to JSON")
-                return
+                    
+                    UserModel.sharedManager.jsonParse(jsonData)
+                    
+                    let tripView = self.storyboard!.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
+                    
+                    self.navigationController!.pushViewController(tripView, animated: true)
+                    
+                    print(jsonData)
+                    
+                } catch  {
+                    print("error trying to convert data to JSON")
+                    return
+                }
             }
+            
+            
             
            
         })

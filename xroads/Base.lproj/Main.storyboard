@@ -293,7 +293,6 @@
                                 </state>
                                 <connections>
                                     <action selector="onLoginClick:" destination="wMd-aH-ZUJ" eventType="touchUpInside" id="Yux-Ld-cEl"/>
-                                    <segue destination="1pp-i1-KHE" kind="show" id="64Q-hI-FLF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -420,7 +419,7 @@
         <!--Reveal View Controller-->
         <scene sceneID="ZlN-iQ-yZx">
             <objects>
-                <viewController id="1pp-i1-KHE" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SWRevealViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1pp-i1-KHE" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SNs-r3-bSt"/>
                         <viewControllerLayoutGuide type="bottom" id="lao-Eb-M3W"/>
@@ -1018,6 +1017,6 @@
         <image name="menu" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Z2U-bm-c78"/>
+        <segue reference="Xlt-m5-Sw9"/>
     </inferredMetricsTieBreakers>
 </document>

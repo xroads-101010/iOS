@@ -10,9 +10,10 @@ import UIKit
 
 public class ApiEndPoints {
     
-    public var upcomingTripEndPoint: String? = "http://0761c8ea.ngrok.io/xroads-app-0.0.1-SNAPSHOT/trip/champion?id=4"
-    public var registrationEndPoint: String? = "https://0761c8ea.ngrok.io/xroads-app-0.0.1-SNAPSHOT/xroads-app/user"
-    public var loginEndPoint: String? = "http://10.106.30.102:8080/xroads-app-0.0.1-SNAPSHOT/user/validate"
+    public var upcomingTripEndPoint: String? = "http://0ef5598e.ngrok.io/xroads-app/trip/champion?id="
+    public var registrationEndPoint: String? = "https://0ef5598e.ngrok.io/xroads-app/xroads-app/user"
+    //public var loginEndPoint: String? = "http://10.106.30.102:8080/xroads-app-0.0.1-SNAPSHOT/user/validate"
+    public var loginEndPoint: String? = "http://0ef5598e.ngrok.io/xroads-app/user/validate"
     
     init()
     {

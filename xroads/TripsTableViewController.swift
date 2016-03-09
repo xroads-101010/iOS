@@ -32,7 +32,9 @@ class TripsTableViewController: UITableViewController {
         
         self.tableView.rowHeight = 70
         
-        get_data_from_url(ApiEndPoints().upcomingTripEndPoint!);
+        let url = ApiEndPoints().upcomingTripEndPoint! + "" + String(UserModel.sharedManager.userId!)
+        
+        get_data_from_url(url);
         
         //makeHTTPGetRequest("https://0761c8ea.ngrok.io/xroads-app/trip/champion?id=4")
     }
