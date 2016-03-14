@@ -25,21 +25,15 @@ class RegisterController: UIViewController {
             
             return
         }
-        
-        let request = NSMutableURLRequest(URL: NSURL(string: ApiEndPoints().registrationEndPoint!)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+        let path: String = ApiEndPoints().registrationEndPoint!
+        let request = NSMutableURLRequest(URL: NSURL(string: path)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         var response: NSURLResponse?
-        // var error: NSError?
-        
-        //let path = "https://4ef93830.ngrok.io/xroads-app/user";
-        //let options = NSJSONWritingOptions(rawValue: 0)
-        
-        // let parameters = ["email": emailId.text!, "userMobile": mobileNumber.text!, "userName": name.text!, "password": password.text!, "isRegistered": "true"] as Dictionary<String, String>
         
         let para:NSMutableDictionary = NSMutableDictionary()
-        para.setValue(emailId.text!, forKey: "email")
-        para.setValue(mobileNumber.text!, forKey: "userMobile")
-        para.setValue(name.text!, forKey: "userName")
-        para.setValue(password.text!, forKey: "password")
+        para.setValue(emailId.text, forKey: "email")
+        para.setValue(mobileNumber.text, forKey: "userMobile")
+        para.setValue(name.text, forKey: "userName")
+        para.setValue(password.text, forKey: "password")
         para.setValue("true", forKey: "isRegistered")
         
         let jsonData: NSData
@@ -68,12 +62,22 @@ class RegisterController: UIViewController {
         
         // look at the response
         if let httpResponse = response as? NSHTTPURLResponse {
+            if(httpResponse.statusCode == 200)
+            {
+                let alert = UIAlertController(title: "Success", message: "User created successfully.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
             print("HTTP response: \(httpResponse.statusCode)")
         } else {
             print("No HTTP response")
+            let alert = UIAlertController(title: "Failure", message: "User creation failed.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(false, animated: true)

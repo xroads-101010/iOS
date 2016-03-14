@@ -35,7 +35,7 @@ class TripsTableViewController: UITableViewController {
         
         self.tableView.rowHeight = 70
         
-        let url = ApiEndPoints().upcomingTripEndPoint! + "" + String(UserModel.sharedManager.userId!)
+        let url = ApiEndPoints().upcomingTripEndPoint! + String(UserModel.sharedManager.userId!)
         
         get_data_from_url(url);
         
