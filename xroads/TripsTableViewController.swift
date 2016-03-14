@@ -32,11 +32,11 @@ class TripsTableViewController: UITableViewController {
         
         self.tableView.rowHeight = 70
         
-        let url = ApiEndPoints().upcomingTripEndPoint! + "" + String(UserModel.sharedManager.userId!)
+        let url = ApiEndPoints().upcomingTripEndPoint! + String(UserModel.sharedManager.userId!)
         
         get_data_from_url(url);
         
-        //makeHTTPGetRequest("https://0761c8ea.ngrok.io/xroads-app/trip/champion?id=4")
+        //makeHTTPGetRequest(url)
     }
 
     @IBAction func menuButtonClick(sender: UIBarButtonItem) {
