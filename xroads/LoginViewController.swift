@@ -80,9 +80,12 @@ class LoginViewController: UIViewController {
                     
                     UserModel.sharedManager.jsonParse(jsonData)
                     
-                    let tripView = self.storyboard!.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
-                    
-                    self.navigationController!.pushViewController(tripView, animated: true)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        
+                        let tripView = self.storyboard!.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
+                        
+                        self.navigationController!.pushViewController(tripView, animated: true)
+                    })
                     
                     print(jsonData)
                     
