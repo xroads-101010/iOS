@@ -12,7 +12,15 @@ class AllMembersTableViewController: UITableViewController {
     
     var tripMembers = [AllUsersModel]()
     var cellSelected:NSMutableArray = []
-
+    var selectedUsers = [AllUsersModel]()
+    let selectedUser:NSMutableDictionary = NSMutableDictionary()
+    
+    
+    
+    struct Static {
+        
+        static var tripMemberAdded = "";
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +53,32 @@ class AllMembersTableViewController: UITableViewController {
         }
     }
     
+    func convertToJson(arr:Array<AllUsersModel>)
+    {
+        let jsonData: NSData
+        var jsonString:String="";
+        
+        let jsonCompatibleArray = arr.map { model in
+            [
+                "memberId":String(model.userId!),
+                "hasMemberJoined":true
+            ]
+        }
+        
+        do{
+            jsonData = try NSJSONSerialization.dataWithJSONObject(jsonCompatibleArray, options: NSJSONWritingOptions())
+            jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
+            
+            
+            Static.tripMemberAdded = jsonString
+            
+            print("json string = \(Static.tripMemberAdded)")
+            
+        } catch _ {
+            print ("UH OOO")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -71,6 +105,7 @@ class AllMembersTableViewController: UITableViewController {
         
         if (self.cellSelected.containsObject(indexPath)) {
             cell.accessoryType = .Checkmark
+            
         } else {
             cell.accessoryType = .None
         }
@@ -85,12 +120,42 @@ class AllMembersTableViewController: UITableViewController {
         if (self.cellSelected.containsObject(indexPath))
         {
             self.cellSelected.removeObject(indexPath)
+            
+            
+            for user in selectedUsers{
+                
+                if user.userId == tripMembers[indexPath.row].userId
+                {
+                    if let index = selectedUsers.indexOf({$0.userId == user.userId}) {
+                        selectedUsers.removeAtIndex(index);
+                        
+                        /*if(selectedUsers.count > 0)
+                        {
+                            for user in selectedUsers
+                            {
+                                print(user.userName)
+                            }
+                        }*/
+                        
+                    }
+                }
+            }
         }
         else
         {
             self.cellSelected.addObject(indexPath)
+            selectedUsers.append(tripMembers[indexPath.row])
+            
+            /*if(selectedUsers.count > 0)
+            {
+                for user in selectedUsers
+                {
+                    print(user.userName)
+                }
+            }*/
         }
         
+        convertToJson(selectedUsers)
         tableView.reloadData()
     }
     

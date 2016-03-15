@@ -129,7 +129,7 @@ class CreateTripViewController: UIViewController {
         para.setValue("false", forKey: "hasTripStarted")
         para.setValue(t, forKey: "startTime")
         para.setValue(t, forKey: "endTime")
-        para.setValue([], forKey: "tripMembers")
+        para.setValue(AllMembersTableViewController.Static.tripMemberAdded, forKey: "tripMembers")
         
         let jsonData: NSData
         var jsonString:String="";
