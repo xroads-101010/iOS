@@ -23,8 +23,8 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
     var tripId:Int = Int()
     var TableData = [TripMember]()
     var tripMembersDictionary = [NSDictionary]()
-    var tripDestinationLat = String()
-    var tripDestinationLong = String()
+    var tripDestinationLat = NSNumber()
+    var tripDestinationLong = NSNumber()
     
     override func viewWillAppear(animated: Bool) {
         
@@ -94,8 +94,11 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             do {
                 let json = try NSJSONSerialization.JSONObjectWithData(JSONData, options: NSJSONReadingOptions()) as? NSDictionary
                 
-                let _tripDestinationLat:String = String(json!["trip"]?["tripDestinationLat"])
-                let _tripDestinationLong:String = String(json!["trip"]?["tripDestinationLong"])
+
+                var dataString = NSString(data: JSONData, encoding: NSUTF8StringEncoding)
+                
+                let _tripDestinationLat:NSNumber = (json!["trip"]?["tripDestinationLat"]!)! as! NSNumber
+                let _tripDestinationLong:NSNumber = (json!["trip"]?["tripDestinationLong"]!)! as! NSNumber
                 
                 tripDestinationLat =  _tripDestinationLat
                 tripDestinationLong = _tripDestinationLong

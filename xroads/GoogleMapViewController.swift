@@ -13,8 +13,8 @@ class GoogleMapViewController: UIViewController {
     
     var mapView:GMSMapView = GMSMapView()
     var tripMembersDictionary = [NSDictionary]()
-    var tripDestinationLat: NSString = ""
-    var tripDestinationLong: NSString = ""
+    var tripDestinationLat = NSNumber()
+    var tripDestinationLong = NSNumber()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,14 @@ class GoogleMapViewController: UIViewController {
         for tripMember in tripMembersDictionary {
             createMarkers(tripMember["memberStartingLocationLat"] as! CLLocationDegrees, lon: tripMember["memberStartingLocationLong"] as! CLLocationDegrees, title: tripMember["memberName"] as! NSString, type: "member")
         }
-        createMarkers((tripDestinationLat as NSString).doubleValue, lon: (tripDestinationLong as NSString).doubleValue, title: "Destination", type: "destination")
+        
+        let MomentaryLatitude = String(tripDestinationLat)
+        let MomentaryLongitude = String(tripDestinationLong)
+        
+        let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: Double((MomentaryLatitude as NSString).doubleValue), longitude: Double((MomentaryLongitude as NSString).doubleValue))
+
+        
+        createMarkers( location.latitude, lon: location.longitude, title: "Destination", type: "destination")
         
     }
     
