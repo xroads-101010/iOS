@@ -158,16 +158,47 @@ class TripsTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == tripSegueIdentifier {
+        if segue.identifier == tripSegueIdentifier
+        {
             if let destination = segue.destinationViewController as? TripDetailsViewController {
-                if let tripIndex = tableView.indexPathForSelectedRow?.row {
-                    destination.tripName = TableData[tripIndex].tripName!
-                    destination.startDate = NSDate(timeIntervalSince1970: NSTimeInterval(TableData[tripIndex].startTime!))
-                    destination.endDate = NSDate(timeIntervalSince1970: NSTimeInterval(TableData[tripIndex].endTime!))
-                    destination.destination = TableData[tripIndex].tripDestination!
-                    destination.createdBy = TableData[tripIndex].tripChampion!
+                if let tripIndex = tableView.indexPathForSelectedRow?.row
+                {
+                    var tripName = String()
+                    var startDate = NSDate()
+                    var endDate = NSDate()
+                    var destinationPlace = String()
+                    //var startpont = String()
+                    var createdBy = Int()
+                    
+                    tripName = TableData[tripIndex].tripName!
+                    startDate = NSDate(timeIntervalSince1970: NSTimeInterval(TableData[tripIndex].startTime!))
+                    endDate = NSDate(timeIntervalSince1970: NSTimeInterval(TableData[tripIndex].endTime!))
+                    destinationPlace = TableData[tripIndex].tripDestination!
+                    createdBy = TableData[tripIndex].tripChampion!
+                    //startpont = TableData[tripIndex].startLocationForCurrentUser!
+                    
+                    
+                    destination.tripNameValue = String(tripName)
+                    
+                    var tripDetails:String = "Trip starts on " + String(startDate)
+                    //tripDetails = tripDetails + " from " + String(startpont)
+                    tripDetails = tripDetails + ", and is planned to reach "
+                    tripDetails = tripDetails + String(destinationPlace)
+                    tripDetails = tripDetails + " by "
+                    tripDetails = tripDetails + String( endDate)
+                    tripDetails = tripDetails + "."
+                    tripDetails = tripDetails + "Trip Coordinator - "
+                    tripDetails = tripDetails + String(createdBy)
+                    tripDetails = tripDetails + "."
+                    
+                    destination.tripDetailsValue = tripDetails
+                    
+                    destination.tripId = TableData[tripIndex].id!
+                    
                 }
             }
+            
+            
         }
     }
 

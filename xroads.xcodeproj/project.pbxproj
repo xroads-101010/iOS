@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8603DFCF1C8DC1EA001C43A1 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 8603DFCE1C8DC1EA001C43A1 /* Podfile */; };
-		8603DFD11C8DDA49001C43A1 /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8603DFD01C8DDA49001C43A1 /* GoogleMapViewController.swift */; };
+		8603DFD11C8DDA49001C43A1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8614A69A1C8714AF005825C3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8614A6991C8714AF005825C3 /* ProfileViewController.swift */; };
 		8624298D1C75A0D2002EDEF8 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624298C1C75A0D2002EDEF8 /* LaunchViewController.swift */; };
 		8624298F1C75A96F002EDEF8 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624298E1C75A96F002EDEF8 /* RegisterController.swift */; };
@@ -22,6 +22,10 @@
 		86A1DB971C86B1DD00A14744 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB961C86B1DD00A14744 /* SWRevealViewController.m */; };
 		86A1DB9B1C86B2DE00A14744 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB9A1C86B2DE00A14744 /* MenuController.swift */; };
 		86A1DB9D1C86B6E100A14744 /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */; };
+		86EABB3E1C969C6500C7D58C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EABB3D1C969C6500C7D58C /* UserModel.swift */; };
+		86EABB401C969CA100C7D58C /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EABB3F1C969CA100C7D58C /* GoogleMapViewController.swift */; };
+		86EABB421C96B83A00C7D58C /* TripMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EABB411C96B83A00C7D58C /* TripMembersTableViewController.swift */; };
+		86EABB441C9716DF00C7D58C /* TripMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EABB431C9716DF00C7D58C /* TripMember.swift */; };
 		86FC4F141C881DC500BE4101 /* CreateTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC4F131C881DC500BE4101 /* CreateTripViewController.swift */; };
 		9667CA411C8D9BEE0016949E /* ApiEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9667CA401C8D9BEE0016949E /* ApiEndPoints.swift */; };
 		96A2F4021C86F0B800B9F2C6 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2F4011C86F0B800B9F2C6 /* Trip.swift */; };
@@ -63,6 +67,10 @@
 		86A1DB961C86B1DD00A14744 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		86A1DB9A1C86B2DE00A14744 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
+		86EABB3D1C969C6500C7D58C /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		86EABB3F1C969CA100C7D58C /* GoogleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
+		86EABB411C96B83A00C7D58C /* TripMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMembersTableViewController.swift; sourceTree = "<group>"; };
+		86EABB431C9716DF00C7D58C /* TripMember.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMember.swift; sourceTree = "<group>"; };
 		86FC4F131C881DC500BE4101 /* CreateTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTripViewController.swift; sourceTree = "<group>"; };
 		907B70806BF5DC7B6427569E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "xroads/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9667CA401C8D9BEE0016949E /* ApiEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiEndPoints.swift; path = ../ApiEndPoints.swift; sourceTree = "<group>"; };
@@ -131,6 +139,7 @@
 				8657CD031C730A75007E8429 /* AppDelegate.swift */,
 				9667CA401C8D9BEE0016949E /* ApiEndPoints.swift */,
 				8624298C1C75A0D2002EDEF8 /* LaunchViewController.swift */,
+				86EABB3F1C969CA100C7D58C /* GoogleMapViewController.swift */,
 				8624298E1C75A96F002EDEF8 /* RegisterController.swift */,
 				862429901C75C5F8002EDEF8 /* LoginViewController.swift */,
 				8657CD051C730A75007E8429 /* ViewController.swift */,
@@ -139,12 +148,14 @@
 				8614A6991C8714AF005825C3 /* ProfileViewController.swift */,
 				86FC4F131C881DC500BE4101 /* CreateTripViewController.swift */,
 				96AB6DF31C89B259000A4B82 /* TripDetailsViewController.swift */,
-				8603DFD01C8DDA49001C43A1 /* GoogleMapViewController.swift */,
+				86EABB3D1C969C6500C7D58C /* UserModel.swift */,
+				86EABB411C96B83A00C7D58C /* TripMembersTableViewController.swift */,
 				8657CD071C730A75007E8429 /* Main.storyboard */,
 				8657CD0A1C730A75007E8429 /* Images.xcassets */,
 				8657CD0C1C730A75007E8429 /* LaunchScreen.xib */,
 				8657CD011C730A75007E8429 /* Supporting Files */,
 				96A2F4011C86F0B800B9F2C6 /* Trip.swift */,
+				86EABB431C9716DF00C7D58C /* TripMember.swift */,
 			);
 			path = xroads;
 			sourceTree = "<group>";
@@ -306,7 +317,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/xroads/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		500E53497C2E2A89FDDA2A26 /* Check Pods Manifest.lock */ = {
@@ -346,10 +357,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8603DFD11C8DDA49001C43A1 /* GoogleMapViewController.swift in Sources */,
+				86EABB441C9716DF00C7D58C /* TripMember.swift in Sources */,
+				8603DFD11C8DDA49001C43A1 /* (null) in Sources */,
 				8624298F1C75A96F002EDEF8 /* RegisterController.swift in Sources */,
+				86EABB401C969CA100C7D58C /* GoogleMapViewController.swift in Sources */,
 				86A1DB9B1C86B2DE00A14744 /* MenuController.swift in Sources */,
 				96AB6DF41C89B259000A4B82 /* TripDetailsViewController.swift in Sources */,
+				86EABB421C96B83A00C7D58C /* TripMembersTableViewController.swift in Sources */,
 				9667CA411C8D9BEE0016949E /* ApiEndPoints.swift in Sources */,
 				86A1DB9D1C86B6E100A14744 /* TripsTableViewController.swift in Sources */,
 				8657CD061C730A75007E8429 /* ViewController.swift in Sources */,
@@ -359,6 +373,7 @@
 				862429911C75C5F8002EDEF8 /* LoginViewController.swift in Sources */,
 				8657CD041C730A75007E8429 /* AppDelegate.swift in Sources */,
 				86A1DB971C86B1DD00A14744 /* SWRevealViewController.m in Sources */,
+				86EABB3E1C969C6500C7D58C /* UserModel.swift in Sources */,
 				86FC4F141C881DC500BE4101 /* CreateTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,7 +453,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -477,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -487,12 +502,12 @@
 		};
 		8657CD1E1C730A75007E8429 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B7E3A659AE54E5EFE6CB0B0 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 907B70806BF5DC7B6427569E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = xroads/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.listertechnologies.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -509,7 +524,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = xroads/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.listertechnologies.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";

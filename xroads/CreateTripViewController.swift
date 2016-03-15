@@ -15,7 +15,11 @@ class CreateTripViewController: UIViewController {
     @IBOutlet var destinationTextField: UITextField!
     @IBOutlet var startPointTextField: UITextField!
     var startplace: String = ""
+    var startplaceLat: String = ""
+    var startplaceLon: String = ""
     var destination: String = ""
+    var destinationLat: String = ""
+    var destinationLon: String = ""
     var isStartPlace:Bool = false
     var isStartDate:Bool = false
     @IBOutlet var trip: UITextField!
@@ -123,8 +127,12 @@ class CreateTripViewController: UIViewController {
         
         let para:NSMutableDictionary = NSMutableDictionary()
         para.setValue(trip.text!, forKey: "tripName")
-        para.setValue(startplace, forKey: "tripDestination")
-        para.setValue(destination, forKey: "startLocationForCurrentUser")
+        para.setValue(destination, forKey: "tripDestination")
+         para.setValue(destinationLat, forKey: "tripDestinationLat")
+         para.setValue(destinationLon, forKey: "tripDestinationLong")
+        para.setValue(startplace, forKey: "startLocationForCurrentUser")
+        para.setValue(startplaceLat, forKey: "startLocationForCurrentUserLat")
+        para.setValue(startplaceLon, forKey: "startLocationForCurrentUserLong")
         para.setValue(UserModel.sharedManager.userId, forKey: "championUserId")
         para.setValue("false", forKey: "hasTripStarted")
         para.setValue(t, forKey: "startTime")
@@ -157,7 +165,7 @@ class CreateTripViewController: UIViewController {
         
         // look at the response
         if let httpResponse = response as? NSHTTPURLResponse {
-            if(httpResponse.statusCode == 200)
+            if(httpResponse.statusCode == 201)
             {
                 let alert = UIAlertController(title: "Success", message: "Trip created successfully.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
@@ -195,11 +203,15 @@ extension CreateTripViewController: GMSAutocompleteViewControllerDelegate {
         
         if(isStartPlace){
             startPointTextField.text = place.name
-            startplace = String(place.coordinate)
+            startplace = String(place.name)
+            startplaceLat = String(place.coordinate.latitude)
+            startplaceLon = String(place.coordinate.longitude)
         }
         else{
             destinationTextField.text = place.name
-            destination = String(place.coordinate)
+            destination = String(place.name)
+            destinationLat = String(place.coordinate.latitude)
+            destinationLon = String(place.coordinate.longitude)
         }
     }
     
