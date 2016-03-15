@@ -13,6 +13,9 @@ class TripsTableViewController: UITableViewController {
     @IBOutlet var addButton: UIBarButtonItem!
     @IBOutlet var menuButton: UIBarButtonItem!
     
+    @IBOutlet weak var busyIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityView: UIView!
+    
     var TableData = [Trip]()
     let tripSegueIdentifier = "ShowDetailsSegue"
    
@@ -108,6 +111,7 @@ class TripsTableViewController: UITableViewController {
     
     func makeHTTPGetRequest(path: String)
     {
+        busyIndicator.startAnimating()
         
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         
@@ -136,7 +140,8 @@ class TripsTableViewController: UITableViewController {
                     for trip in reposArray {
                         self.TableData.append(Trip(json: trip))
                     }
-                    
+                    self.activityView.hidden = true
+                    self.busyIndicator.stopAnimating();
                     self.tableView.reloadData()
                 }
 
