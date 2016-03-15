@@ -11,6 +11,7 @@ import UIKit
 class AllMembersTableViewController: UITableViewController {
     
     var tripMembers = [AllUsersModel]()
+    var cellSelected:NSMutableArray = []
 
 
     override func viewDidLoad() {
@@ -19,6 +20,29 @@ class AllMembersTableViewController: UITableViewController {
         let url = ApiEndPoints().allMembersEndPoint!
         
         getAllMembers(url);
+    }
+    
+    func getAllMembers(url:String)
+    {
+        
+        if let JSONData = NSData(contentsOfURL: NSURL(string: url)!)
+        {
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(JSONData, options: NSJSONReadingOptions()) as? NSDictionary
+                
+                if let reposArray = json!["users"] as? [NSDictionary] {
+                    
+                    for trip in reposArray {
+                        
+                        tripMembers.append(AllUsersModel(json: trip))
+                    }
+                }
+                
+                print(json)
+            } catch {
+                print("error serializing JSON: \(error)")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,45 +62,53 @@ class AllMembersTableViewController: UITableViewController {
         return tripMembers.count
     }
     
-    func getAllMembers(url:String)
-    {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath)
         
-        if let JSONData = NSData(contentsOfURL: NSURL(string: url)!)
-        {
-            do {
-                let json = try NSJSONSerialization.JSONObjectWithData(JSONData, options: NSJSONReadingOptions()) as? NSDictionary
-                
-                if let reposArray = json!["trips"] as? [NSDictionary] {
-                    
-                    for trip in reposArray {
-                        
-                        tripMembers.append(AllUsersModel(json: trip))
-                    }
-                }
-                
-                print(json)
-            } catch {
-                print("error serializing JSON: \(error)")
-            }
-        }
-    }
-    
-    /*override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TripCell", forIndexPath: indexPath)
+        let users = tripMembers[indexPath.row]
         
-        let trip = TableData[indexPath.row]
+        cell.textLabel?.text = users.userName
         
-        if let nameLabel = cell.viewWithTag(100) as? UILabel { //3
-            nameLabel.text = trip.tripName
-        }
-        if let gameLabel = cell.viewWithTag(101) as? UILabel {
-            gameLabel.text = trip.tripDestination
+        if (self.cellSelected.containsObject(indexPath)) {
+            cell.accessoryType = .Checkmark
+        } else {
+            cell.accessoryType = .None
         }
         
         return cell
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        //let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if (self.cellSelected.containsObject(indexPath))
+        {
+            self.cellSelected.removeObject(indexPath)
+        }
+        else
+        {
+            self.cellSelected.addObject(indexPath)
+        }
+        
+        tableView.reloadData()
+    }
+    
+    /*override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            
+            if cell.selected {
+                cell.selected = false
+            }
+            else{
+                cell.selected = true
+            }
+        }
+        
+    }*/
+    
+    /*override func viewWillAppear(animated: Bool) {
         
         self.tabBarController?.navigationItem.title = "Upcoming Trips"
         self.tabBarController?.navigationItem.leftBarButtonItem = menuButton

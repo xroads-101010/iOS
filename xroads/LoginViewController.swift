@@ -89,6 +89,13 @@ class LoginViewController: UIViewController {
                         self.navigationController!.pushViewController(tripView, animated: true)
                     })
                     
+                    /*dispatch_async(dispatch_get_main_queue(), {
+                        
+                        let tripView = self.storyboard!.instantiateViewControllerWithIdentifier("AllMembersTableViewController") as! AllMembersTableViewController
+                        
+                        self.navigationController!.pushViewController(tripView, animated: true)
+                    })*/
+                    
                     print(jsonData)
                     
                 } catch  {
