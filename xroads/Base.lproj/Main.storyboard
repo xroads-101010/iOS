@@ -462,11 +462,11 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TripCell" rowHeight="100" id="zmP-Eq-HWt">
-                                <rect key="frame" x="0.0" y="72" width="600" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TripCell" rowHeight="25" id="zmP-Eq-HWt">
+                                <rect key="frame" x="0.0" y="72" width="600" height="25"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zmP-Eq-HWt" id="ciZ-fI-fVb">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="24"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ci2-q3-nhV">
@@ -548,67 +548,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gax-1G-abr">
-                                <rect key="frame" x="35" y="44" width="545" height="135"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ftx-je-LFm">
-                                        <rect key="frame" x="0.0" y="0.0" width="545" height="135"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWQ-SV-DAz">
-                                                <rect key="frame" x="0.0" y="0.0" width="545" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StartTimeValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKL-ge-vq7">
-                                                <rect key="frame" x="0.0" y="33" width="545" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EndTimeValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJw-IJ-bSx">
-                                                <rect key="frame" x="0.0" y="60" width="545" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DestinationValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuk-Zh-q8S">
-                                                <rect key="frame" x="0.0" y="87" width="545" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CreatedByValue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgh-xv-fyV">
-                                                <rect key="frame" x="0.0" y="114" width="545" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="hqy-6c-au4"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSB-90-ikN">
+                                <rect key="frame" x="35" y="44" width="530" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vio-dh-A2x">
+                                <rect key="frame" x="35" y="80" width="530" height="14"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Trip Details">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2oT-CP-7fA">
+                                <rect key="frame" x="20" y="109" width="560" height="90"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="Ftx-je-LFm" firstAttribute="top" secondItem="Gax-1G-abr" secondAttribute="top" id="7SK-6s-kJY"/>
-                                    <constraint firstItem="Ftx-je-LFm" firstAttribute="leading" secondItem="Gax-1G-abr" secondAttribute="leading" constant="15" id="VGS-b2-tfi"/>
+                                    <constraint firstAttribute="height" constant="90" id="xWd-SW-ho8"/>
                                 </constraints>
-                            </stackView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="10" reuseIdentifier="TripMemberCell" rowHeight="30" id="758-38-fvd">
+                                        <rect key="frame" x="0.0" y="28" width="560" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="758-38-fvd" id="IhX-PB-OKs">
+                                            <rect key="frame" x="0.0" y="0.0" width="527" height="29"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Cf-z2-0gV">
+                                                    <rect key="frame" x="16" y="0.0" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="Hug-QX-xkj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Gax-1G-abr" firstAttribute="top" secondItem="bWF-ok-b2C" secondAttribute="bottom" id="ErC-Yk-2hS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Gax-1G-abr" secondAttribute="trailing" id="Pve-cB-dR6"/>
-                            <constraint firstItem="Gax-1G-abr" firstAttribute="leading" secondItem="hXE-po-HbW" secondAttribute="leadingMargin" constant="15" id="oTa-jA-RkF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rSB-90-ikN" secondAttribute="trailing" constant="15" id="D95-EP-Umw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vio-dh-A2x" secondAttribute="trailing" constant="15" id="DSZ-s8-PAG"/>
+                            <constraint firstItem="vio-dh-A2x" firstAttribute="leading" secondItem="hXE-po-HbW" secondAttribute="leadingMargin" constant="15" id="F02-EY-8Nd"/>
+                            <constraint firstItem="vio-dh-A2x" firstAttribute="centerX" secondItem="hXE-po-HbW" secondAttribute="centerX" id="Yda-HA-bwF"/>
+                            <constraint firstItem="rSB-90-ikN" firstAttribute="leading" secondItem="hXE-po-HbW" secondAttribute="leadingMargin" constant="15" id="g7C-EP-nZZ"/>
+                            <constraint firstItem="rSB-90-ikN" firstAttribute="centerX" secondItem="hXE-po-HbW" secondAttribute="centerX" id="hAZ-WG-amM"/>
+                            <constraint firstItem="rSB-90-ikN" firstAttribute="top" secondItem="bWF-ok-b2C" secondAttribute="bottom" id="l0L-gj-Fe1"/>
+                            <constraint firstItem="vio-dh-A2x" firstAttribute="top" secondItem="rSB-90-ikN" secondAttribute="bottom" constant="15" id="lAP-gK-8wx"/>
+                            <constraint firstItem="2oT-CP-7fA" firstAttribute="leading" secondItem="hXE-po-HbW" secondAttribute="leadingMargin" id="nBU-Lw-3mG"/>
+                            <constraint firstItem="2oT-CP-7fA" firstAttribute="centerX" secondItem="hXE-po-HbW" secondAttribute="centerX" id="rC6-0f-EcY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2oT-CP-7fA" secondAttribute="trailing" id="vfy-dx-fce"/>
+                            <constraint firstItem="2oT-CP-7fA" firstAttribute="top" secondItem="vio-dh-A2x" secondAttribute="bottom" constant="15" id="zZG-Dg-eNR"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="createdByLabel" destination="Bgh-xv-fyV" id="XFL-Wg-q0K"/>
-                        <outlet property="destinationLabel" destination="wuk-Zh-q8S" id="pqc-xU-v16"/>
-                        <outlet property="endTimeLabel" destination="NJw-IJ-bSx" id="e90-8Y-XdE"/>
-                        <outlet property="startDateLabel" destination="bKL-ge-vq7" id="Evo-Z3-iuZ"/>
-                        <outlet property="tripNameLabel" destination="xWQ-SV-DAz" id="ZVV-UA-IoE"/>
+                        <outlet property="tripDetails" destination="vio-dh-A2x" id="86a-y2-n37"/>
+                        <outlet property="tripMembers" destination="2oT-CP-7fA" id="ncK-39-HtS"/>
+                        <outlet property="tripName" destination="rSB-90-ikN" id="uTQ-9p-ZXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FAV-qf-wmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

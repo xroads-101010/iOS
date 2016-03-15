@@ -11,12 +11,14 @@ class Trip {
     
     var tripName: String?
     var tripDestination: String?
+    var startLocationForCurrentUser: String?
     var tripChampion: Int?
     var hasTripStarted: Bool?
     var startTime: Double?
     var endTime: Double?
     var createdAt: Double?
     var updatedAt: Double?
+    var id: Int?
     
     init(json: NSDictionary)
     {
@@ -28,5 +30,8 @@ class Trip {
         self.endTime = json["endTime"] as? Double
         self.createdAt = json["createdAt"] as? Double
         self.updatedAt = json["updatedAt"] as? Double
+        self.startLocationForCurrentUser = json["startLocationForCurrentUser"] as? String
+        self.startLocationForCurrentUser = "Mylapore"
+        self.id = json["id"] as? Int
     }
 }
