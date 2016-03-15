@@ -18,8 +18,7 @@ class AllMembersTableViewController: UITableViewController {
     
     
     struct Static {
-        
-        static var tripMemberAdded = "";
+        static var memberArr = []
     }
 
     override func viewDidLoad() {
@@ -53,11 +52,8 @@ class AllMembersTableViewController: UITableViewController {
         }
     }
     
-    func convertToJson(arr:Array<AllUsersModel>)
+    func createKeyValuePairs(arr:Array<AllUsersModel>)
     {
-        let jsonData: NSData
-        var jsonString:String="";
-        
         let jsonCompatibleArray = arr.map { model in
             [
                 "memberId":String(model.userId!),
@@ -65,18 +61,7 @@ class AllMembersTableViewController: UITableViewController {
             ]
         }
         
-        do{
-            jsonData = try NSJSONSerialization.dataWithJSONObject(jsonCompatibleArray, options: NSJSONWritingOptions())
-            jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
-            
-            
-            Static.tripMemberAdded = jsonString
-            
-            print("json string = \(Static.tripMemberAdded)")
-            
-        } catch _ {
-            print ("UH OOO")
-        }
+        Static.memberArr = jsonCompatibleArray
     }
     
     override func didReceiveMemoryWarning() {
@@ -155,10 +140,14 @@ class AllMembersTableViewController: UITableViewController {
             }*/
         }
         
-        convertToJson(selectedUsers)
+        
         tableView.reloadData()
     }
     
+    @IBAction func onDoneButtonClick(sender: AnyObject) {
+        createKeyValuePairs(selectedUsers)
+    }
+
     /*override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
