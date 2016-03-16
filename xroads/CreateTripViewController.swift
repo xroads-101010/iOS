@@ -128,8 +128,8 @@ class CreateTripViewController: UIViewController {
         let para:NSMutableDictionary = NSMutableDictionary()
         para.setValue(trip.text!, forKey: "tripName")
         para.setValue(destination, forKey: "tripDestination")
-         para.setValue(destinationLat, forKey: "tripDestinationLat")
-         para.setValue(destinationLon, forKey: "tripDestinationLong")
+        para.setValue(destinationLat, forKey: "tripDestinationLat")
+        para.setValue(destinationLon, forKey: "tripDestinationLong")
         para.setValue(startplace, forKey: "startLocationForCurrentUser")
         para.setValue(startplaceLat, forKey: "startLocationForCurrentUserLat")
         para.setValue(startplaceLon, forKey: "startLocationForCurrentUserLong")
@@ -137,7 +137,7 @@ class CreateTripViewController: UIViewController {
         para.setValue("false", forKey: "hasTripStarted")
         para.setValue(t, forKey: "startTime")
         para.setValue(t, forKey: "endTime")
-        para.setValue([], forKey: "tripMembers")
+        para.setValue(AllMembersTableViewController.Static.memberArr, forKey: "tripMembers")
         
         let jsonData: NSData
         var jsonString:String="";

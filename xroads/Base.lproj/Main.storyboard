@@ -550,7 +550,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSB-90-ikN">
                                 <rect key="frame" x="35" y="44" width="530" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vio-dh-A2x">
@@ -558,7 +558,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Trip Details">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="12" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -586,7 +586,7 @@
                                                         <constraint firstAttribute="width" constant="100" id="Hug-QX-xkj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -780,6 +780,17 @@
                                     <action selector="endDateEditing:" destination="8Bn-Y3-CGX" eventType="editingDidBegin" id="7aC-qm-Hfm"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq4-4r-Nx6">
+                                <rect key="frame" x="165" y="143" width="96" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="vCU-8r-mLc"/>
+                                </constraints>
+                                <state key="normal" title="Add Members"/>
+                                <connections>
+                                    <segue destination="PBX-5k-HY4" kind="show" id="2gb-dV-mmF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -829,7 +840,7 @@
             </objects>
             <point key="canvasLocation" x="4193" y="-1262"/>
         </scene>
-        <!--All Members Table View Controller-->
+        <!--App Users-->
         <scene sceneID="rFF-3x-wz1">
             <objects>
                 <tableViewController storyboardIdentifier="AllMembersTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PBX-5k-HY4" customClass="AllMembersTableViewController" customModule="xroads" customModuleProvider="target" sceneMemberID="viewController">
@@ -839,7 +850,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" textLabel="KPr-14-lqR" style="IBUITableViewCellStyleDefault" id="B0l-s1-13h">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B0l-s1-13h" id="yB3-5L-Llh">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -861,6 +872,13 @@
                             <outlet property="delegate" destination="PBX-5k-HY4" id="DOK-aj-Y2h"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="App Users" id="Olg-sg-bNp">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="bHe-B7-UxY">
+                            <connections>
+                                <action selector="onDoneButtonClick:" destination="PBX-5k-HY4" id="qok-TQ-hdH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdc-Jn-MA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
