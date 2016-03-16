@@ -22,6 +22,7 @@
 		86A1DB971C86B1DD00A14744 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB961C86B1DD00A14744 /* SWRevealViewController.m */; };
 		86A1DB9B1C86B2DE00A14744 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB9A1C86B2DE00A14744 /* MenuController.swift */; };
 		86A1DB9D1C86B6E100A14744 /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */; };
+		86B5313B1C98533F0049ECF3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86B5313A1C98533F0049ECF3 /* Info.plist */; };
 		86EABB3E1C969C6500C7D58C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EABB3D1C969C6500C7D58C /* UserModel.swift */; };
 		86EABB401C969CA100C7D58C /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EABB3F1C969CA100C7D58C /* GoogleMapViewController.swift */; };
 		86EABB421C96B83A00C7D58C /* TripMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EABB411C96B83A00C7D58C /* TripMembersTableViewController.swift */; };
@@ -67,6 +68,7 @@
 		86A1DB961C86B1DD00A14744 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		86A1DB9A1C86B2DE00A14744 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
+		86B5313A1C98533F0049ECF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86EABB3D1C969C6500C7D58C /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		86EABB3F1C969CA100C7D58C /* GoogleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
 		86EABB411C96B83A00C7D58C /* TripMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMembersTableViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				86A1DB9C1C86B6E100A14744 /* TripsTableViewController.swift */,
 				8614A6991C8714AF005825C3 /* ProfileViewController.swift */,
 				86FC4F131C881DC500BE4101 /* CreateTripViewController.swift */,
+				86B5313A1C98533F0049ECF3 /* Info.plist */,
 				96AB6DF31C89B259000A4B82 /* TripDetailsViewController.swift */,
 				86EABB3D1C969C6500C7D58C /* UserModel.swift */,
 				86EABB411C96B83A00C7D58C /* TripMembersTableViewController.swift */,
@@ -291,6 +294,7 @@
 				8657CD091C730A75007E8429 /* Main.storyboard in Resources */,
 				8657CD0E1C730A75007E8429 /* LaunchScreen.xib in Resources */,
 				8603DFCF1C8DC1EA001C43A1 /* Podfile in Resources */,
+				86B5313B1C98533F0049ECF3 /* Info.plist in Resources */,
 				8657CD0B1C730A75007E8429 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

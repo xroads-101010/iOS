@@ -16,6 +16,7 @@ public class ApiEndPoints {
     public var loginEndPoint: String? = "https://22385681.ngrok.io/xroads-app/user/validate"
     public var createTrip: String? = "https://22385681.ngrok.io/xroads-app/trip"
     public var allMembersEndPoint: String? = "https://4590980c.ngrok.io/xroads-app/user/allUsers"
+    public var updateUserLocation: String? = "https://22385681.ngrok.io/xroads-app/location"
     
     init()
     {
