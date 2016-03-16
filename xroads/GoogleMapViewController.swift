@@ -129,6 +129,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
         var response: NSURLResponse?
         let para:NSMutableDictionary = NSMutableDictionary()
         para.setValue(UserModel.sharedManager.userId, forKey: "memberId")
+        para.setValue("", forKey: "location")
         para.setValue(lat, forKey: "locationLat")
         para.setValue(lon, forKey: "locationLong")
         
