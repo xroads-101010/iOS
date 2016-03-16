@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
     
     func doUserLogin(path: String)
     {
-        
+        LoadingOverlay.shared.showOverlay(self.view)
         let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
@@ -103,9 +103,10 @@ class LoginViewController: UIViewController {
                     return
                 }
             }
-            
-            
-            
+            else
+            {
+                LoadingOverlay.shared.hideOverlayView()
+            }
            
         })
         

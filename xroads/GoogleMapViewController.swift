@@ -85,14 +85,15 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
         
         let _position = CLLocationCoordinate2D(latitude: lan, longitude: lon)
         let marker = GMSMarker(position: _position)
-        if(type == "destination")
-        {
+        
+        if(type == "destination"){
             marker.icon = UIImage(named: "finish_flag")
         }
-        else
-        {
-             marker.icon = GMSMarker.markerImageWithColor(UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0))
+        else{
+            marker.icon = GMSMarker.markerImageWithColor(UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0))
         }
+        
+
        
         marker.map = mapView;
         marker.title = title as String
@@ -106,7 +107,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){
         print ("present location : \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)---description : \(newLocation.description)")
         
-        updateUserCurrentLocaion(String(newLocation.coordinate.latitude), lon: String(newLocation.coordinate.longitude))
+        //updateUserCurrentLocaion(String(newLocation.coordinate.latitude), lon: String(newLocation.coordinate.longitude))
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

@@ -21,6 +21,7 @@ class TripsTableViewController: UITableViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        LoadingOverlay.shared.showOverlay(self.view)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -91,7 +92,9 @@ class TripsTableViewController: UITableViewController {
         
         if let JSONData = NSData(contentsOfURL: NSURL(string: url)!)
         {
-            do {
+          LoadingOverlay.shared.hideOverlayView()
+            do
+            {
                 let json = try NSJSONSerialization.JSONObjectWithData(JSONData, options: NSJSONReadingOptions()) as? NSDictionary
                 
                 if let reposArray = json!["trips"] as? [NSDictionary] {
@@ -102,7 +105,9 @@ class TripsTableViewController: UITableViewController {
                 }
                 
                 print(json)
-            } catch {
+            }
+            catch
+            {
                 print("error serializing JSON: \(error)")
             }
             
@@ -165,7 +170,10 @@ class TripsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == tripSegueIdentifier
         {
-            if let destination = segue.destinationViewController as? TripDetailsViewController {
+            if let destination = segue.destinationViewController as? TripDetailsViewController
+            {
+                LoadingOverlay.shared.showOverlay(self.view)
+                
                 if let tripIndex = tableView.indexPathForSelectedRow?.row
                 {
                     var tripName = String()

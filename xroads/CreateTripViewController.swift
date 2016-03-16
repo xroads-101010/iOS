@@ -120,6 +120,8 @@ class CreateTripViewController: UIViewController {
             return
         }
         
+        LoadingOverlay.shared.showOverlay(self.view)
+        
         let path: String = ApiEndPoints().createTrip!
         let request = NSMutableURLRequest(URL: NSURL(string: path)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         var response: NSURLResponse?
@@ -164,19 +166,28 @@ class CreateTripViewController: UIViewController {
         
         
         // look at the response
-        if let httpResponse = response as? NSHTTPURLResponse {
+        if let httpResponse = response as? NSHTTPURLResponse
+        {
             if(httpResponse.statusCode == 201)
             {
                 let alert = UIAlertController(title: "Success", message: "Trip created successfully.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
+            else
+            {
+                LoadingOverlay.shared.hideOverlayView()
+            }
             print("HTTP response: \(httpResponse.statusCode)")
-        } else {
+        }
+        else
+        {
             print("No HTTP response")
             let alert = UIAlertController(title: "Failure", message: "Trip creation failed.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
+            
+            LoadingOverlay.shared.hideOverlayView()
         }
     }
     /*

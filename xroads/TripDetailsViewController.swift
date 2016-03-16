@@ -77,12 +77,14 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         tripMembers.delegate = self
         tripMembers.dataSource = self
         
+        LoadingOverlay.shared.showOverlay(self.view)
+        
         getTripDetails()
     }
     
     func getTripDetails()
     {
-        
+        LoadingOverlay.shared.showOverlay(self.view)
         var path: String = ApiEndPoints().createTrip!
             path = path + "?tripId="
             path = path + String(tripId)
@@ -118,12 +120,12 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             } catch {
                 print("error serializing JSON: \(error)")
             }
-            
+            LoadingOverlay.shared.hideOverlayView()
         }
         
         let mapWidth: CGFloat = view.bounds.width
-        let mapHeight: CGFloat = 175//view.bounds.height - (tripMembers.frame.origin.y + tripMembers.frame.height + 90)
-        let mapViewFrame: CGRect = CGRectMake(0, view.bounds.height/2 + 25, mapWidth, mapHeight)
+        let mapHeight: CGFloat = 270//view.bounds.height - (tripMembers.frame.origin.y + tripMembers.frame.height + 90)
+        let mapViewFrame: CGRect = CGRectMake(0, (view.bounds.height/2) - 25, mapWidth, mapHeight)
         
         let map = storyboard?.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
         map.tripMembersDictionary = tripMembersDictionary
@@ -134,6 +136,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         map.view.frame = mapViewFrame
         view.addSubview(map.view)
         map.didMoveToParentViewController(self)
+        
 
     }
 }

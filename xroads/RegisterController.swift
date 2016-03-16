@@ -25,6 +25,9 @@ class RegisterController: UIViewController {
             
             return
         }
+        
+        LoadingOverlay.shared.showOverlay(self.view)
+        
         let path: String = ApiEndPoints().registrationEndPoint!
         let request = NSMutableURLRequest(URL: NSURL(string: path)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         var response: NSURLResponse?
@@ -67,13 +70,26 @@ class RegisterController: UIViewController {
                 let alert = UIAlertController(title: "Success", message: "User created successfully.", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
+                
+                print("HTTP response: \(httpResponse.statusCode)")
+                
+                let loginView = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+                self.navigationController!.pushViewController(loginView, animated: true)
             }
-            print("HTTP response: \(httpResponse.statusCode)")
-        } else {
+            else
+            {
+                LoadingOverlay.shared.hideOverlayView()
+            }
+            
+        }
+        else
+        {
             print("No HTTP response")
             let alert = UIAlertController(title: "Failure", message: "User creation failed.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
+            
+            LoadingOverlay.shared.hideOverlayView()
         }
         
     }
