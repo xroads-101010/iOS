@@ -18,15 +18,18 @@ class RegisterController: UIViewController {
 
     @IBAction func clickRegisterButton(sender: AnyObject) {
         
-        if(mobileNumber.text == "" || emailId.text == "" || name.text == "" || password.text == "" || confirmPassword == ""){
+        LoadingOverlay.shared.showOverlay(self.view)
+        
+        if(mobileNumber.text == "" || emailId.text == "" || name.text == "" || password.text == "" || confirmPassword == "")
+        
+        {
             let alert = UIAlertController(title: "All fields are mandatory", message: "Some of the mandatory fields are missing.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             
+            LoadingOverlay.shared.hideOverlayView()
             return
         }
-        
-        LoadingOverlay.shared.showOverlay(self.view)
         
         let path: String = ApiEndPoints().registrationEndPoint!
         let request = NSMutableURLRequest(URL: NSURL(string: path)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
@@ -78,6 +81,9 @@ class RegisterController: UIViewController {
             }
             else
             {
+                let alert = UIAlertController(title: "Failure", message: "User creation failed.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
                 LoadingOverlay.shared.hideOverlayView()
             }
             
@@ -85,6 +91,7 @@ class RegisterController: UIViewController {
         else
         {
             print("No HTTP response")
+            
             let alert = UIAlertController(title: "Failure", message: "User creation failed.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)

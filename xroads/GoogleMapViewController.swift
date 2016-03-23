@@ -16,6 +16,8 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
     var tripDestinationLat = NSNumber()
     var tripDestinationLong = NSNumber()
     let locationManager = CLLocationManager()
+    var latitude = ""
+    var longitude = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +99,9 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
        
         marker.map = mapView;
         marker.title = title as String
+        
+        let myTimer : NSTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("myPerformeCode:"), userInfo: nil, repeats: true)
+        myTimer.fire()
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,7 +112,9 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){
         print ("present location : \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)---description : \(newLocation.description)")
         
-        //updateUserCurrentLocaion(String(newLocation.coordinate.latitude), lon: String(newLocation.coordinate.longitude))
+        latitude = String(newLocation.coordinate.latitude)
+        longitude = String(newLocation.coordinate.longitude)
+        
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -123,13 +130,18 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
             print(placemark.country)
     }
     
+    func myPerformeCode(timer : NSTimer) {
+        
+        updateUserCurrentLocaion(latitude, lon: longitude)
+    }
+    
     func updateUserCurrentLocaion(lat: String, lon: String){
         
         let path: String = ApiEndPoints().updateUserLocation!
         let request = NSMutableURLRequest(URL: NSURL(string: path)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         var response: NSURLResponse?
         let para:NSMutableDictionary = NSMutableDictionary()
-        para.setValue(UserModel.sharedManager.userId, forKey: "memberId")
+        para.setValue(UserModel.sharedManager.userId, forKey: "userId")
         para.setValue("", forKey: "location")
         para.setValue(lat, forKey: "locationLat")
         para.setValue(lon, forKey: "locationLong")

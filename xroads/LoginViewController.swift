@@ -100,6 +100,10 @@ class LoginViewController: UIViewController {
                     
                 } catch  {
                     print("error trying to convert data to JSON")
+                    LoadingOverlay.shared.hideOverlayView()
+                    let alert = UIAlertController(title: "Error", message: "Login Failed.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
                     return
                 }
             }
