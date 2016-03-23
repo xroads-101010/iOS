@@ -107,6 +107,34 @@ class RegisterController: UIViewController {
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        let textfieldBorderColor: CGColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0).CGColor
+        
+        mobileNumber.layer.cornerRadius = 8.0
+        mobileNumber.layer.masksToBounds = true
+        mobileNumber.layer.borderColor = textfieldBorderColor
+        mobileNumber.layer.borderWidth = 2.0
+        
+        emailId.layer.cornerRadius = 8.0
+        emailId.layer.masksToBounds = true
+        emailId.layer.borderColor = textfieldBorderColor
+        emailId.layer.borderWidth = 2.0
+        
+        name.layer.cornerRadius = 8.0
+        name.layer.masksToBounds = true
+        name.layer.borderColor = textfieldBorderColor
+        name.layer.borderWidth = 2.0
+        
+        password.layer.cornerRadius = 8.0
+        password.layer.masksToBounds = true
+        password.layer.borderColor = textfieldBorderColor
+        password.layer.borderWidth = 2.0
+        
+        confirmPassword.layer.cornerRadius = 8.0
+        confirmPassword.layer.masksToBounds = true
+        confirmPassword.layer.borderColor = textfieldBorderColor
+        confirmPassword.layer.borderWidth = 2.0
+    
     }
     
     @IBAction func confirmPasswordDidEndEditing(sender: AnyObject) {

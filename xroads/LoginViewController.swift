@@ -20,8 +20,30 @@ class LoginViewController: UIViewController {
         self.navigationItem.setHidesBackButton(false, animated: true)
         // Do any additional setup after loading the view.
         
-        userId.text = "abc1";
-        password.text = "passwd";
+        //userId.text = "abin";
+        //password.text = "123";
+        
+        let textfieldBorderColor: CGColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0).CGColor
+        
+        userId.layer.cornerRadius = 8.0
+        userId.layer.masksToBounds = true
+        userId.layer.borderColor = textfieldBorderColor
+        userId.layer.borderWidth = 2.0
+        
+        password.layer.cornerRadius = 8.0
+        password.layer.masksToBounds = true
+        password.layer.borderColor = textfieldBorderColor
+        password.layer.borderWidth = 2.0
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,47 +140,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    func login(path: String)
-    {
-        let request = NSMutableURLRequest(URL: NSURL(string: path)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
-        var response: NSURLResponse?
-        
-        let para:NSMutableDictionary = NSMutableDictionary()
-        para.setValue(userId.text!, forKey: "userName")
-        para.setValue(password.text!, forKey: "password")
-        
-        let jsonData: NSData
-        var jsonString:String="";
-        do{
-            jsonData = try NSJSONSerialization.dataWithJSONObject(para, options: NSJSONWritingOptions())
-            jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
-            print("json string = \(jsonString)")
-            
-        } catch _ {
-            print ("UH OOO")
-        }
-        
-        request.HTTPBody = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        request.HTTPMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        // send the request
-        do {
-            try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
-            // use jsonData
-        } catch {
-            // report error
-        }
-        
-        
-        // look at the response
-        if let httpResponse = response as? NSHTTPURLResponse {
-            print("HTTP response: \(httpResponse.statusCode)")
-        } else {
-            print("No HTTP response")
-        }
-
-    }
 
     /*
     // MARK: - Navigation

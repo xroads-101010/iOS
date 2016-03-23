@@ -33,6 +33,33 @@ class CreateTripViewController: UIViewController {
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        let textfieldBorderColor: CGColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0).CGColor
+        
+        trip.layer.cornerRadius = 8.0
+        trip.layer.masksToBounds = true
+        trip.layer.borderColor = textfieldBorderColor
+        trip.layer.borderWidth = 2.0
+        
+        startDate.layer.cornerRadius = 8.0
+        startDate.layer.masksToBounds = true
+        startDate.layer.borderColor = textfieldBorderColor
+        startDate.layer.borderWidth = 2.0
+        
+        endDate.layer.cornerRadius = 8.0
+        endDate.layer.masksToBounds = true
+        endDate.layer.borderColor = textfieldBorderColor
+        endDate.layer.borderWidth = 2.0
+        
+        startPointTextField.layer.cornerRadius = 8.0
+        startPointTextField.layer.masksToBounds = true
+        startPointTextField.layer.borderColor = textfieldBorderColor
+        startPointTextField.layer.borderWidth = 2.0
+        
+        destinationTextField.layer.cornerRadius = 8.0
+        destinationTextField.layer.masksToBounds = true
+        destinationTextField.layer.borderColor = textfieldBorderColor
+        destinationTextField.layer.borderWidth = 2.0
     }
     
     func dismissKeyboard() {

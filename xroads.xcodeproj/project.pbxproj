@@ -13,6 +13,10 @@
 		8624298D1C75A0D2002EDEF8 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624298C1C75A0D2002EDEF8 /* LaunchViewController.swift */; };
 		8624298F1C75A96F002EDEF8 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8624298E1C75A96F002EDEF8 /* RegisterController.swift */; };
 		862429911C75C5F8002EDEF8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862429901C75C5F8002EDEF8 /* LoginViewController.swift */; };
+		86470A731CA27344002B7D24 /* KCFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86470A711CA27344002B7D24 /* KCFloatingActionButton.swift */; };
+		86470A741CA27344002B7D24 /* KCFloatingActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86470A721CA27344002B7D24 /* KCFloatingActionButtonItem.swift */; };
+		86470A761CA27505002B7D24 /* KCFloatingActionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86470A751CA27505002B7D24 /* KCFloatingActionButtonDelegate.swift */; };
+		86470A7A1CA277B2002B7D24 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86470A791CA277B2002B7D24 /* CustomTabBarController.swift */; };
 		8657CD041C730A75007E8429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657CD031C730A75007E8429 /* AppDelegate.swift */; };
 		8657CD061C730A75007E8429 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657CD051C730A75007E8429 /* ViewController.swift */; };
 		8657CD091C730A75007E8429 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8657CD071C730A75007E8429 /* Main.storyboard */; };
@@ -56,6 +60,10 @@
 		8624298C1C75A0D2002EDEF8 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		8624298E1C75A96F002EDEF8 /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		862429901C75C5F8002EDEF8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		86470A711CA27344002B7D24 /* KCFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButton.swift; sourceTree = "<group>"; };
+		86470A721CA27344002B7D24 /* KCFloatingActionButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonItem.swift; sourceTree = "<group>"; };
+		86470A751CA27505002B7D24 /* KCFloatingActionButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonDelegate.swift; sourceTree = "<group>"; };
+		86470A791CA277B2002B7D24 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		8657CCFE1C730A75007E8429 /* xroads.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xroads.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8657CD021C730A75007E8429 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8657CD031C730A75007E8429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +150,9 @@
 		8657CD001C730A75007E8429 /* xroads */ = {
 			isa = PBXGroup;
 			children = (
+				86470A711CA27344002B7D24 /* KCFloatingActionButton.swift */,
+				86470A721CA27344002B7D24 /* KCFloatingActionButtonItem.swift */,
+				86470A751CA27505002B7D24 /* KCFloatingActionButtonDelegate.swift */,
 				8603DFCE1C8DC1EA001C43A1 /* Podfile */,
 				86A1DB931C86B1AE00A14744 /* SWRevealViewController */,
 				8657CD031C730A75007E8429 /* AppDelegate.swift */,
@@ -168,6 +179,7 @@
 				96A2F4011C86F0B800B9F2C6 /* Trip.swift */,
 				86EABB431C9716DF00C7D58C /* TripMember.swift */,
 				86AF29011C99A17000E07FE9 /* LoadingOverlay.swift */,
+				86470A791CA277B2002B7D24 /* CustomTabBarController.swift */,
 			);
 			path = xroads;
 			sourceTree = "<group>";
@@ -382,15 +394,19 @@
 				8657CD061C730A75007E8429 /* ViewController.swift in Sources */,
 				86AF29001C99316500E07FE9 /* AllUsersModel.swift in Sources */,
 				86AF29021C99A17000E07FE9 /* LoadingOverlay.swift in Sources */,
+				86470A7A1CA277B2002B7D24 /* CustomTabBarController.swift in Sources */,
 				8624298D1C75A0D2002EDEF8 /* LaunchViewController.swift in Sources */,
 				86AF28FE1C99314900E07FE9 /* AllMembersTableViewController.swift in Sources */,
 				8614A69A1C8714AF005825C3 /* ProfileViewController.swift in Sources */,
+				86470A741CA27344002B7D24 /* KCFloatingActionButtonItem.swift in Sources */,
 				96A2F4021C86F0B800B9F2C6 /* Trip.swift in Sources */,
 				862429911C75C5F8002EDEF8 /* LoginViewController.swift in Sources */,
 				8657CD041C730A75007E8429 /* AppDelegate.swift in Sources */,
 				86A1DB971C86B1DD00A14744 /* SWRevealViewController.m in Sources */,
 				86EABB3E1C969C6500C7D58C /* UserModel.swift in Sources */,
 				86FC4F141C881DC500BE4101 /* CreateTripViewController.swift in Sources */,
+				86470A761CA27505002B7D24 /* KCFloatingActionButtonDelegate.swift in Sources */,
+				86470A731CA27344002B7D24 /* KCFloatingActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,7 +545,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xroads/xroads-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -545,7 +561,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.listertechnologies.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "xroads/xroads-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -124,7 +124,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
         let mapWidth: CGFloat = view.bounds.width
-        let mapHeight: CGFloat = 270//view.bounds.height - (tripMembers.frame.origin.y + tripMembers.frame.height + 90)
+        let mapHeight: CGFloat = 240//view.bounds.height - (tripMembers.frame.origin.y + tripMembers.frame.height + 90)
         let mapViewFrame: CGRect = CGRectMake(0, (view.bounds.height/2) - 25, mapWidth, mapHeight)
         
         let map = storyboard?.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
@@ -137,6 +137,19 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         view.addSubview(map.view)
         map.didMoveToParentViewController(self)
         
+        let fab = KCFloatingActionButton()
+        fab.addItem("Show map fullscreen", icon: UIImage(named: "Logout")!, handler: {
+            item in
+            
+            let mapview = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
+            mapview.tripMembersDictionary = self.tripMembersDictionary
+            mapview.tripDestinationLat = self.tripDestinationLat
+            mapview.tripDestinationLong = self.tripDestinationLong
+            self.navigationController!.pushViewController(mapview, animated: true)
+            
+            fab.close()
+        })
+        view.addSubview(fab)
 
     }
 }

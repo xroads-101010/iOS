@@ -132,7 +132,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
     
     func myPerformeCode(timer : NSTimer) {
         
-        updateUserCurrentLocaion(latitude, lon: longitude)
+        //updateUserCurrentLocaion(latitude, lon: longitude)
     }
     
     func updateUserCurrentLocaion(lat: String, lon: String){
