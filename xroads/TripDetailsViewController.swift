@@ -30,17 +30,6 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         
         tripName.text = tripNameValue
         tripDetails.text = tripDetailsValue
-        
-        /*let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        
-        startDateLabel.text = dateFormatter.stringFromDate(startDate)
-        
-        endTimeLabel.text = dateFormatter.stringFromDate(endDate)
-        
-        destinationLabel.text = destination
-        
-        createdByLabel.text = String(createdBy)*/
     }
     
     // MARK: - Table view data source
@@ -78,8 +67,9 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         tripMembers.dataSource = self
         
         LoadingOverlay.shared.showOverlay(self.view)
-        
-        getTripDetails()
+        dispatch_async(dispatch_get_main_queue(), {
+            self.getTripDetails()
+        })
     }
     
     func getTripDetails()
@@ -120,12 +110,13 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             } catch {
                 print("error serializing JSON: \(error)")
             }
+            tripMembers.reloadData()
             LoadingOverlay.shared.hideOverlayView()
         }
         
         let mapWidth: CGFloat = view.bounds.width
-        let mapHeight: CGFloat = 240//view.bounds.height - (tripMembers.frame.origin.y + tripMembers.frame.height + 90)
-        let mapViewFrame: CGRect = CGRectMake(0, (view.bounds.height/2) - 25, mapWidth, mapHeight)
+        let mapHeight: CGFloat = 350//view.bounds.height - (tripMembers.frame.origin.y + tripMembers.frame.height + 90)
+        let mapViewFrame: CGRect = CGRectMake(0, (view.bounds.height/2) - 65, mapWidth, mapHeight)
         
         let map = storyboard?.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
         map.tripMembersDictionary = tripMembersDictionary
@@ -137,8 +128,11 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         view.addSubview(map.view)
         map.didMoveToParentViewController(self)
         
+        let redColor: UIColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0)
         let fab = KCFloatingActionButton()
-        fab.addItem("Show map fullscreen", icon: UIImage(named: "Logout")!, handler: {
+        fab.buttonColor = redColor
+
+        fab.addItem("Map fullscreen", icon: UIImage(named: "fullScreen")!, handler: {
             item in
             
             let mapview = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
@@ -149,6 +143,7 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             
             fab.close()
         })
+        fab.addItem("Past Trips", icon: UIImage(named: "Trip")!)
         view.addSubview(fab)
 
     }

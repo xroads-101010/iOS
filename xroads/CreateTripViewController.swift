@@ -139,15 +139,24 @@ class CreateTripViewController: UIViewController {
     }
     @IBAction func CreateTrip(sender: UIButton) {
         
+        LoadingOverlay.shared.showOverlay(self.view)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.createTrip()
+        })
+        
+        
+    }
+    
+    func createTrip(){
+        
         if(trip.text == "" || startPointTextField.text == "" || destinationTextField.text == "" || startDate.text == "" || endDate.text == ""){
             let alert = UIAlertController(title: "All fields are mandatory", message: "Some of the mandatory fields are missing.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             
+            LoadingOverlay.shared.hideOverlayView()
             return
         }
-        
-        LoadingOverlay.shared.showOverlay(self.view)
         
         let path: String = ApiEndPoints().createTrip!
         let request = NSMutableURLRequest(URL: NSURL(string: path)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
@@ -175,7 +184,9 @@ class CreateTripViewController: UIViewController {
             jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding) as! String
             print("json string = \(jsonString)")
             
-        } catch _ {
+        }
+        catch{
+            LoadingOverlay.shared.hideOverlayView()
             print ("UH OOO")
         }
         
@@ -187,7 +198,9 @@ class CreateTripViewController: UIViewController {
         do {
             try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
             // use jsonData
-        } catch {
+        }
+        catch {
+            LoadingOverlay.shared.hideOverlayView()
             // report error
         }
         
@@ -197,9 +210,12 @@ class CreateTripViewController: UIViewController {
         {
             if(httpResponse.statusCode == 201)
             {
-                let alert = UIAlertController(title: "Success", message: "Trip created successfully.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+//                let alert = UIAlertController(title: "Success", message: "Trip created successfully.", preferredStyle: UIAlertControllerStyle.Alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+//                self.presentViewController(alert, animated: true, completion: nil)
+                
+                let tripView = self.storyboard!.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
+                self.navigationController!.pushViewController(tripView, animated: true)
             }
             else
             {

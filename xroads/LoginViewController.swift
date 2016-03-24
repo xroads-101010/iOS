@@ -82,11 +82,13 @@ class LoginViewController: UIViewController {
             (data, response, error) in
             guard let responseData = data else {
                 print("Error: did not receive data")
+                self.removeLoader()
                 return
             }
             guard error == nil else {
                 print("error calling GET on /posts/1")
                 print(error)
+                self.removeLoader()
                 return
             }
             
@@ -100,38 +102,25 @@ class LoginViewController: UIViewController {
                     jsonData = try NSJSONSerialization.JSONObjectWithData(responseData,
                         options: NSJSONReadingOptions()) as! NSDictionary
                     
-                    
-                    
                     UserModel.sharedManager.jsonParse(jsonData)
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         
                         let tripView = self.storyboard!.instantiateViewControllerWithIdentifier("SWRevealViewController") as! SWRevealViewController
-                        
                         self.navigationController!.pushViewController(tripView, animated: true)
                     })
-                    
-                    /*dispatch_async(dispatch_get_main_queue(), {
-                        
-                        let tripView = self.storyboard!.instantiateViewControllerWithIdentifier("AllMembersTableViewController") as! AllMembersTableViewController
-                        
-                        self.navigationController!.pushViewController(tripView, animated: true)
-                    })*/
                     
                     print(jsonData)
                     
                 } catch  {
                     print("error trying to convert data to JSON")
-                    LoadingOverlay.shared.hideOverlayView()
-                    let alert = UIAlertController(title: "Error", message: "Login Failed.", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                   self.removeLoader()
                     return
                 }
             }
             else
             {
-                LoadingOverlay.shared.hideOverlayView()
+                self.removeLoader()
             }
            
         })
@@ -139,7 +128,16 @@ class LoginViewController: UIViewController {
         task.resume()
     }
     
-    
+    func removeLoader(){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            LoadingOverlay.shared.hideOverlayView()
+            let alert = UIAlertController(title: "Error", message: "Login Failed.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
+    }
 
     /*
     // MARK: - Navigation
