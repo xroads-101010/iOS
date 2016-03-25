@@ -18,29 +18,25 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
     let locationManager = CLLocationManager()
     var latitude = ""
     var longitude = ""
+    var currentLocation:CLLocation = CLLocation()
+    var destinationLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var count = 1.0
+    var destinationLatitude = ""
+    var destinationLongitude = ""
+    var locationArray: [CLLocationCoordinate2D] = []
+    let path = GMSMutablePath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        let camera = GMSCameraPosition.cameraWithLatitude(12.9696422, longitude: 80.2437093, zoom: 12)
+        let camera = GMSCameraPosition.cameraWithLatitude(12.9696422, longitude: 80.2437093, zoom: 1)
         mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
         self.view = mapView
         
         mapView.myLocationEnabled = true
         mapView.settings.myLocationButton = true
-        
-        /*let path = GMSMutablePath()
-        path.addCoordinate(CLLocationCoordinate2D(latitude: 12.9696422, longitude: 80.2437093))
-        path.addCoordinate(CLLocationCoordinate2D(latitude: 12.9896222, longitude: 80.2498313))
-        path.addCoordinate(CLLocationCoordinate2D(latitude: 13.0054322, longitude: 80.2464043))
-        let polyline = GMSPolyline(path: path)
-        polyline.map = mapView*/
-        
-        //createMarkers(12.9696422, lon: 80.2437093)
-        //createMarkers(12.9896222, lon: 80.2498313)
-        //createMarkers(13.0054322, lon: 80.2464043)
-         mapView.delegate = self
+        mapView.delegate = self
         
         // Ask for Authorisation from the User.
         locationManager.requestAlwaysAuthorization()
@@ -65,18 +61,42 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
         
-        for tripMember in tripMembersDictionary {
-            createMarkers(tripMember["memberStartingLocationLat"] as! CLLocationDegrees, lon: tripMember["memberStartingLocationLong"] as! CLLocationDegrees, title: tripMember["memberName"] as! NSString, type: "member")
+        destinationLatitude = String(tripDestinationLat)
+        destinationLongitude = String(tripDestinationLong)
+        
+        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "update", userInfo: nil, repeats: true)
+    }
+    
+    // must be internal or public.
+    func update() {
+        
+        mapView.clear()
+        mapView.myLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        mapView.delegate = self
+        
+        locationArray.append(CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude  + (0.000100 * count), longitude: currentLocation.coordinate.longitude + (0.000100 * count)))
+        
+        for tripMember in tripMembersDictionary
+        {
+            let memberLatitude = tripMember["memberStartingLocationLat"] as! CLLocationDegrees  + (0.000100 * count)
+            let memberLongitude = tripMember["memberStartingLocationLong"] as! CLLocationDegrees + (0.000100 * count)
+            
+            createMarkers(memberLatitude, lon: memberLongitude, title: tripMember["memberName"] as! NSString, type: "member")
         }
         
-        let MomentaryLatitude = String(tripDestinationLat)
-        let MomentaryLongitude = String(tripDestinationLong)
+        destinationLocation = CLLocationCoordinate2D(latitude: Double((destinationLatitude as NSString).doubleValue), longitude: Double((destinationLongitude as NSString).doubleValue))
         
-        let location:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: Double((MomentaryLatitude as NSString).doubleValue), longitude: Double((MomentaryLongitude as NSString).doubleValue))
+        createMarkers( destinationLocation.latitude, lon: destinationLocation.longitude, title: "Destination", type: "destination")
+        count = count + 1
+        
+        let polyline = GMSPolyline(path: path)
+        for current in locationArray
+        {
+            path.addCoordinate(CLLocationCoordinate2D(latitude: current.latitude, longitude: current.longitude))
+        }
+        polyline.map = mapView
 
-        
-        createMarkers( location.latitude, lon: location.longitude, title: "Destination", type: "destination")
-        
     }
     
     func createMarkers(lan: CLLocationDegrees, lon: CLLocationDegrees, title: NSString, type: NSString){
@@ -112,9 +132,10 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){
         print ("present location : \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)---description : \(newLocation.description)")
         
-        latitude = String(newLocation.coordinate.latitude)
-        longitude = String(newLocation.coordinate.longitude)
-        
+        if(latitude == ""){
+            
+           currentLocation =  newLocation
+        }
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
