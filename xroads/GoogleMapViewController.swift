@@ -121,23 +121,6 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
     
     func startPlot(){
         let timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "update", userInfo: nil, repeats: true)
-        
-        
-        let redColor: UIColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0)
-        let fab = KCFloatingActionButton()
-        fab.buttonColor = redColor
-        fab.addItem("Map fullscreen", icon: UIImage(named: "fullScreen")!, handler: {
-            item in
-            
-            let mapview = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
-            mapview.tripMembersDictionary = self.tripMembersDictionary
-            mapview.tripDestinationLat = self.tripDestinationLat
-            mapview.tripDestinationLong = self.tripDestinationLong
-            self.navigationController!.pushViewController(mapview, animated: true)
-            
-            fab.close()
-        })
-        self.view.addSubview(fab)
     }
     
     // must be internal or public.

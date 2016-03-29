@@ -128,6 +128,13 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         view.addSubview(map.view)
         map.didMoveToParentViewController(self)
         
+        let timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "update", userInfo: nil, repeats: false)
+        
+    }
+    
+    // must be internal or public.
+    func update() {
+        
         dispatch_async(dispatch_get_main_queue(), {
             
             let redColor: UIColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0)
@@ -136,19 +143,20 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
             fab.addItem("Map fullscreen", icon: UIImage(named: "fullScreen")!, handler: {
                 item in
                 
-                let mapview = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
-                mapview.tripMembersDictionary = self.tripMembersDictionary
-                mapview.tripDestinationLat = self.tripDestinationLat
-                mapview.tripDestinationLong = self.tripDestinationLong
-                self.navigationController!.pushViewController(mapview, animated: true)
+                let fullMap = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
+                fullMap.tripMembersDictionary = self.tripMembersDictionary
+                fullMap.tripDestinationLat = self.tripDestinationLat
+                fullMap.tripDestinationLong = self.tripDestinationLong
+                self.navigationController!.pushViewController(fullMap, animated: false)
                 
                 fab.close()
             })
-            fab.addItem("Past Trips", icon: UIImage(named: "Trip")!)
+            fab.addItem("Past Trips", icon: UIImage(named: "Trip")!, handler: {
+                item in
+                
+                fab.close()
+            })
             self.view.addSubview(fab)
         })
-
-        
-
     }
 }
