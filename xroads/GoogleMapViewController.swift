@@ -63,7 +63,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
             
             locationCaptured = true
             // Do any additional setup after loading the view.
-            let camera = GMSCameraPosition.cameraWithLatitude(newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude, zoom: 10)
+            let camera = GMSCameraPosition.cameraWithLatitude(newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude, zoom: 18)
             mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
             self.view = mapView
             
