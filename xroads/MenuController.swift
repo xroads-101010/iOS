@@ -41,14 +41,13 @@ class MenuController: UITableViewController {
         //CODE TO BE RUN ON CELL TOUCH
         
         let indexPath = tableView.indexPathForSelectedRow!
-        let currentCell = tableView.cellForRowAtIndexPath(indexPath)! as UITableViewCell
         
-        /*if(currentCell.textLabel!.text! == "Logout"){
+        if(indexPath.row == 2){
 
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         let destination = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
         navigationController?.pushViewController(destination, animated: true)
-        }*/
+        }
     }
 
     /*
