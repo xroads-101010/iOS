@@ -128,23 +128,27 @@ class TripDetailsViewController: UIViewController, UITableViewDelegate, UITableV
         view.addSubview(map.view)
         map.didMoveToParentViewController(self)
         
-        let redColor: UIColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0)
-        let fab = KCFloatingActionButton()
-        fab.buttonColor = redColor
-
-        fab.addItem("Map fullscreen", icon: UIImage(named: "fullScreen")!, handler: {
-            item in
+        dispatch_async(dispatch_get_main_queue(), {
             
-            let mapview = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
-            mapview.tripMembersDictionary = self.tripMembersDictionary
-            mapview.tripDestinationLat = self.tripDestinationLat
-            mapview.tripDestinationLong = self.tripDestinationLong
-            self.navigationController!.pushViewController(mapview, animated: true)
-            
-            fab.close()
+            let redColor: UIColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0)
+            let fab = KCFloatingActionButton()
+            fab.buttonColor = redColor
+            fab.addItem("Map fullscreen", icon: UIImage(named: "fullScreen")!, handler: {
+                item in
+                
+                let mapview = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
+                mapview.tripMembersDictionary = self.tripMembersDictionary
+                mapview.tripDestinationLat = self.tripDestinationLat
+                mapview.tripDestinationLong = self.tripDestinationLong
+                self.navigationController!.pushViewController(mapview, animated: true)
+                
+                fab.close()
+            })
+            fab.addItem("Past Trips", icon: UIImage(named: "Trip")!)
+            self.view.addSubview(fab)
         })
-        fab.addItem("Past Trips", icon: UIImage(named: "Trip")!)
-        view.addSubview(fab)
+
+        
 
     }
 }

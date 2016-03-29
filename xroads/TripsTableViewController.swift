@@ -166,7 +166,7 @@ class TripsTableViewController: UITableViewController {
                     
                     destination.tripDetailsValue = tripDetails
                     
-                    destination.tripId = TableData[tripIndex].id!
+                    destination.tripId = TableData[tripIndex].tripId!
                     
                 }
             }

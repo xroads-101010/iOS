@@ -20,8 +20,8 @@ class LoginViewController: UIViewController {
         self.navigationItem.setHidesBackButton(false, animated: true)
         // Do any additional setup after loading the view.
         
-        //userId.text = "abin";
-        //password.text = "123";
+        userId.text = "8892149799";
+        password.text = "123";
         
         let textfieldBorderColor: CGColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0).CGColor
         
@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
         request.HTTPMethod = "POST"
         
         let userInputData:NSMutableDictionary = NSMutableDictionary()
-        userInputData.setValue(userId.text!, forKey: "userName")
+        userInputData.setValue(userId.text!, forKey: "userMobile")
         userInputData.setValue(password.text!, forKey: "password")
         
         request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(userInputData, options: NSJSONWritingOptions())

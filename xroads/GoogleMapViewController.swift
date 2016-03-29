@@ -16,27 +16,20 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
     var tripDestinationLat = NSNumber()
     var tripDestinationLong = NSNumber()
     let locationManager = CLLocationManager()
-    var latitude = ""
-    var longitude = ""
     var currentLocation:CLLocation = CLLocation()
     var destinationLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
-    var count = 1.0
+    var count = 0
     var destinationLatitude = ""
     var destinationLongitude = ""
-    var locationArray: [CLLocationCoordinate2D] = []
-    let path = GMSMutablePath()
+    var path = GMSMutablePath()
+    var polyline = GMSPolyline()
+    var routeArray:NSMutableArray = NSMutableArray()
+    var locationCaptured:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        let camera = GMSCameraPosition.cameraWithLatitude(12.9696422, longitude: 80.2437093, zoom: 1)
-        mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        self.view = mapView
-        
-        mapView.myLocationEnabled = true
-        mapView.settings.myLocationButton = true
-        mapView.delegate = self
+        LoadingOverlay.shared.showOverlay(self.view)
         
         // Ask for Authorisation from the User.
         locationManager.requestAlwaysAuthorization()
@@ -63,8 +56,88 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
         
         destinationLatitude = String(tripDestinationLat)
         destinationLongitude = String(tripDestinationLong)
+    }
+    
+    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){
+        if(locationCaptured == false){
+            
+            locationCaptured = true
+            // Do any additional setup after loading the view.
+            let camera = GMSCameraPosition.cameraWithLatitude(newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude, zoom: 10)
+            mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
+            self.view = mapView
+            
+            mapView.myLocationEnabled = true
+            mapView.settings.myLocationButton = true
+            mapView.delegate = self
+            
+            currentLocation =  newLocation
+            var url = "https://router.project-osrm.org/viaroute?loc="
+            url = url + String(currentLocation.coordinate.latitude) + "," + String(currentLocation.coordinate.longitude) + "&loc="
+            url = url + destinationLatitude + "," + destinationLongitude + "&compression=false"
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                self.getRoute(url)
+            })
+            
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Error with Server");
+    }
+    
+    func displayLocationInfo(placemark: CLPlacemark) {
+    }
+    
+    func getRoute(url: String){
         
-        let timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "update", userInfo: nil, repeats: true)
+        if let JSONData = NSData(contentsOfURL: NSURL(string: url)!)
+        {
+            do
+            {
+                let json = try NSJSONSerialization.JSONObjectWithData(JSONData, options: NSJSONReadingOptions()) as? NSDictionary
+                
+                if let reposArray = json!["route_geometry"] as? NSMutableArray {
+                    
+                    routeArray = reposArray
+                    startPlot()
+                    LoadingOverlay.shared.hideOverlayView()
+                    
+                }
+                
+                print(json)
+            }
+            catch
+            {
+                LoadingOverlay.shared.hideOverlayView()
+                print("error serializing JSON: \(error)")
+            }
+            
+        }
+        
+    }
+    
+    func startPlot(){
+        let timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "update", userInfo: nil, repeats: true)
+        
+        
+        let redColor: UIColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0)
+        let fab = KCFloatingActionButton()
+        fab.buttonColor = redColor
+        fab.addItem("Map fullscreen", icon: UIImage(named: "fullScreen")!, handler: {
+            item in
+            
+            let mapview = self.storyboard!.instantiateViewControllerWithIdentifier("GoogleMapViewController") as! GoogleMapViewController
+            mapview.tripMembersDictionary = self.tripMembersDictionary
+            mapview.tripDestinationLat = self.tripDestinationLat
+            mapview.tripDestinationLong = self.tripDestinationLong
+            self.navigationController!.pushViewController(mapview, animated: true)
+            
+            fab.close()
+        })
+        self.view.addSubview(fab)
     }
     
     // must be internal or public.
@@ -75,28 +148,32 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
         mapView.settings.myLocationButton = true
         mapView.delegate = self
         
-        locationArray.append(CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude  + (0.000100 * count), longitude: currentLocation.coordinate.longitude + (0.000100 * count)))
+        var memberLatitude = CLLocationDegrees()
+        var memberLongitude = CLLocationDegrees()
         
         for tripMember in tripMembersDictionary
         {
-            let memberLatitude = tripMember["memberStartingLocationLat"] as! CLLocationDegrees  + (0.000100 * count)
-            let memberLongitude = tripMember["memberStartingLocationLong"] as! CLLocationDegrees + (0.000100 * count)
-            
-            createMarkers(memberLatitude, lon: memberLongitude, title: tripMember["memberName"] as! NSString, type: "member")
+            if( count >= routeArray.count)
+            {
+                count = 1
+                path.removeAllCoordinates()
+            }
+            else
+            {
+                memberLatitude =  (routeArray[count][0])! as! CLLocationDegrees
+                memberLongitude = (routeArray[count][1])! as! CLLocationDegrees
+                
+                createMarkers(memberLatitude, lon: memberLongitude, title: tripMember["memberName"] as! NSString, type: "member")
+                count = count + 1
+            }
         }
-        
         destinationLocation = CLLocationCoordinate2D(latitude: Double((destinationLatitude as NSString).doubleValue), longitude: Double((destinationLongitude as NSString).doubleValue))
         
         createMarkers( destinationLocation.latitude, lon: destinationLocation.longitude, title: "Destination", type: "destination")
-        count = count + 1
         
-        let polyline = GMSPolyline(path: path)
-        for current in locationArray
-        {
-            path.addCoordinate(CLLocationCoordinate2D(latitude: current.latitude, longitude: current.longitude))
-        }
+        path.addCoordinate(CLLocationCoordinate2D(latitude: memberLatitude, longitude: memberLongitude))
+        polyline = GMSPolyline(path: path)
         polyline.map = mapView
-
     }
     
     func createMarkers(lan: CLLocationDegrees, lon: CLLocationDegrees, title: NSString, type: NSString){
@@ -114,14 +191,10 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
         else{
             marker.icon = GMSMarker.markerImageWithColor(UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0))
         }
-        
-
-       
+        marker.snippet = title as String
         marker.map = mapView;
         marker.title = title as String
         
-        let myTimer : NSTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("myPerformeCode:"), userInfo: nil, repeats: true)
-        myTimer.fire()
     }
     
     override func didReceiveMemoryWarning() {
@@ -129,37 +202,11 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
         // Dispose of any resources that can be recreated.
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!){
-        print ("present location : \(newLocation.coordinate.latitude), \(newLocation.coordinate.longitude)---description : \(newLocation.description)")
-        
-        if(latitude == ""){
-            
-           currentLocation =  newLocation
-        }
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error with Server");
-    }
-    
-    func displayLocationInfo(placemark: CLPlacemark) {
-            //stop updating location to save battery life
-            locationManager.stopUpdatingLocation()
-            print (placemark.locality)
-            print(placemark.postalCode)
-            print(placemark.administrativeArea)
-            print(placemark.country)
-    }
-    
-    func myPerformeCode(timer : NSTimer) {
-        
-        //updateUserCurrentLocaion(latitude, lon: longitude)
-    }
     
     func updateUserCurrentLocaion(lat: String, lon: String){
         
-        let path: String = ApiEndPoints().updateUserLocation!
-        let request = NSMutableURLRequest(URL: NSURL(string: path)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
+        let url: String = ApiEndPoints().updateUserLocation!
+        let request = NSMutableURLRequest(URL: NSURL(string: url)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 5)
         var response: NSURLResponse?
         let para:NSMutableDictionary = NSMutableDictionary()
         para.setValue(UserModel.sharedManager.userId, forKey: "userId")
@@ -194,8 +241,9 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate,CLLocationMa
         if let httpResponse = response as? NSHTTPURLResponse {
             print("HTTP response: \(httpResponse.statusCode)")
         }
-
+        
     }
+    
     /*
     // MARK: - Navigation
     
