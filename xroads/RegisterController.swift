@@ -19,9 +19,14 @@ class RegisterController: UIViewController {
     @IBAction func clickRegisterButton(sender: AnyObject) {
         
         LoadingOverlay.shared.showOverlay(self.view)
-        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.register()
+        })
+    }
+    
+    func register(){
         if(mobileNumber.text == "" || emailId.text == "" || name.text == "" || password.text == "" || confirmPassword == "")
-        
+            
         {
             let alert = UIAlertController(title: "All fields are mandatory", message: "Some of the mandatory fields are missing.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
@@ -70,14 +75,20 @@ class RegisterController: UIViewController {
         if let httpResponse = response as? NSHTTPURLResponse {
             if(httpResponse.statusCode == 200)
             {
-                let alert = UIAlertController(title: "Success", message: "User created successfully.", preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-                
-                print("HTTP response: \(httpResponse.statusCode)")
                 
                 let loginView = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
                 self.navigationController!.pushViewController(loginView, animated: true)
+                
+                print("HTTP response: \(httpResponse.statusCode)")
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    let alert = UIAlertController(title: "Success", message: "User created successfully.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                })
+                
             }
             else
             {
@@ -98,7 +109,6 @@ class RegisterController: UIViewController {
             
             LoadingOverlay.shared.hideOverlayView()
         }
-        
     }
     
     override func viewDidLoad() {

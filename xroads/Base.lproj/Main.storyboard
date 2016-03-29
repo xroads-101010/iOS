@@ -146,7 +146,6 @@
                                 </state>
                                 <connections>
                                     <action selector="clickRegisterButton:" destination="slJ-hs-Azi" eventType="touchUpInside" id="FEN-6j-iFs"/>
-                                    <segue destination="wMd-aH-ZUJ" kind="show" id="a8G-bw-dLE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tX-u5-KTe">
@@ -291,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4Q-gX-aMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="299" y="-1761"/>
+            <point key="canvasLocation" x="341" y="-1761"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="C70-Fx-9RN">
@@ -936,10 +935,9 @@
         <image name="new_trip" width="400" height="384"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a8G-bw-dLE"/>
         <segue reference="mRs-dw-479"/>
-        <segue reference="JeT-Ju-BGu"/>
         <segue reference="6e6-LY-vMS"/>
         <segue reference="jFB-i2-IOW"/>
+        <segue reference="JeT-Ju-BGu"/>
     </inferredMetricsTieBreakers>
 </document>
