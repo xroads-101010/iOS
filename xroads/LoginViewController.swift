@@ -20,8 +20,8 @@ class LoginViewController: UIViewController {
         self.navigationItem.setHidesBackButton(false, animated: true)
         // Do any additional setup after loading the view.
         
-        userId.text = "8892149799";
-        password.text = "123";
+        userId.text = "";
+        password.text = "";
         
         let textfieldBorderColor: CGColor = UIColor(hue: 0.025, saturation: 0.3, brightness: 0.93, alpha: 1.0).CGColor
         

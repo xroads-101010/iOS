@@ -44,10 +44,8 @@ class MenuController: UITableViewController {
         
         if(indexPath.row == 2){
 
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        let destination = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-        navigationController?.pushViewController(destination, animated: true)
-        }
+            let loginView = self.storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+            self.navigationController!.pushViewController(loginView, animated: true)        }
     }
 
     /*
