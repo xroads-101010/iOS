@@ -586,7 +586,7 @@
         <!--Google Map View Controller-->
         <scene sceneID="hdQ-wx-6Kh">
             <objects>
-                <viewController storyboardIdentifier="GoogleMapViewController" id="EPj-ot-5CJ" customClass="GoogleMapViewController" customModule="xroads" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GoogleMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EPj-ot-5CJ" customClass="GoogleMapViewController" customModule="xroads" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L9d-RX-Mll"/>
                         <viewControllerLayoutGuide type="bottom" id="wSB-6u-mgt"/>
@@ -614,6 +614,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8P-I4-U9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3912" y="-1761"/>
+        </scene>
+        <!--Google Map View Controller-->
+        <scene sceneID="Gs5-Ja-YmD">
+            <objects>
+                <viewController storyboardIdentifier="FullScreenMap" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XOJ-Mi-d7c" customClass="GoogleMapViewController" customModule="xroads" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xmY-jN-le2"/>
+                        <viewControllerLayoutGuide type="bottom" id="oZB-aE-X0A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jbb-fx-FVp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hiz-iT-AXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4577" y="-1761"/>
         </scene>
         <!--Create Trip View Controller-->
         <scene sceneID="NJb-yt-vWi">
@@ -937,7 +955,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="mRs-dw-479"/>
         <segue reference="6e6-LY-vMS"/>
-        <segue reference="jFB-i2-IOW"/>
-        <segue reference="JeT-Ju-BGu"/>
+        <segue reference="2vH-tj-sjx"/>
+        <segue reference="8Y2-3s-KWO"/>
     </inferredMetricsTieBreakers>
 </document>
