@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
         request.HTTPMethod = "POST"
         
         let userInputData:NSMutableDictionary = NSMutableDictionary()
-        userInputData.setValue(userId.text!, forKey: "userName")
+        userInputData.setValue(userId.text!, forKey: "userMobile")
         userInputData.setValue(password.text!, forKey: "password")
         
         request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(userInputData, options: NSJSONWritingOptions())
